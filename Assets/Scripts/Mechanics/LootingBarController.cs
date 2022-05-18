@@ -1,17 +1,46 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Permanence.Scripts.Cores;
+using System;
 
-public class LootingBarController : MonoBehaviour
+namespace Permanence.Scripts.Mechanics
 {
-    [SerializeField]
-    private Transform lootingBar;
-    public void SetPercentage(float percentage)
+    [RequireComponent(typeof(ResourceCardBehaviour))]
+    public class LootingBarController : MonoBehaviour
     {
-        lootingBar.localPosition = new Vector2(0 - percentage * lootingBar.localScale.x, 0);
-    }
+        [SerializeField]
+        private Transform lootingBar;
+        private ResourceCardBehaviour resourceCard;
 
-    public void ResetBar()
-    {
-        lootingBar.localPosition = Vector2.zero;
+        private void Awake() {
+            resourceCard = GetComponent<ResourceCardBehaviour>();
+            lootingBar.gameObject.SetActive(false);
+        }
+
+        private void Start() {
+            resourceCard.AddEventListener(ResourceCardEvent.ON_LOOTING_PROGRESS, SetPercentage);
+            resourceCard.AddEventListener(ResourceCardEvent.ON_LOOTING_START, ShowLootingBar);
+            resourceCard.AddEventListener(ResourceCardEvent.ON_LOOTING_STOP, HideLootingBar);
+        }
+
+        private void OnDestroy() {
+            resourceCard.RemoveEventListener(ResourceCardEvent.ON_LOOTING_PROGRESS, SetPercentage);
+            resourceCard.RemoveEventListener(ResourceCardEvent.ON_LOOTING_START, ShowLootingBar);
+            resourceCard.RemoveEventListener(ResourceCardEvent.ON_LOOTING_STOP, HideLootingBar);
+        }
+
+        private void ShowLootingBar(dynamic value) {
+            lootingBar.gameObject.SetActive(true);
+        }
+
+        private void HideLootingBar(dynamic value) {
+            lootingBar.gameObject.SetActive(false);
+        }
+
+        private void SetPercentage(dynamic percentage)
+        {
+            var progress = (float)percentage;
+            lootingBar.localPosition = new Vector2(0 - progress * lootingBar.localScale.x, 0);
+        }
     }
 }

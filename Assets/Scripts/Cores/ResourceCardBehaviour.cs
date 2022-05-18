@@ -6,7 +6,7 @@ using Permanence.Scripts.Extensions;
 
 namespace Permanence.Scripts.Cores
 {
-    public abstract class ResourceCardBehaviour : MonoBehaviour
+    public abstract class ResourceCardBehaviour : EventBusBehaviour<dynamic>
     {
         [SerializeField]
         private ResourceSpawnArea resourceSpawnArea;
@@ -14,49 +14,48 @@ namespace Permanence.Scripts.Cores
         private float lootTime;
         [SerializeField]
         private List<GameObject> loots;
-        [SerializeField]
-        private LootingBarController loadingBar;
         private float timeUntilNextLoot;
         private bool isLooting;
-        private float timeModifier = 1f;
+        private float speedModifier = 1f;
 
+        #pragma warning disable 0114
         protected virtual void Awake() {
+            base.Awake();
             timeUntilNextLoot = lootTime;
-            loadingBar.gameObject.SetActive(false);
         }
+        #pragma warning restore 0114
 
         protected virtual void Update() {
             if (isLooting)
             {
-                timeUntilNextLoot -= Time.deltaTime;
-                loadingBar.SetPercentage(timeUntilNextLoot / (lootTime * timeModifier));
+                timeUntilNextLoot -= Time.deltaTime * speedModifier;
+                    DispatchEvent(ResourceCardEvent.ON_LOOTING_PROGRESS, timeUntilNextLoot/lootTime);
                 if (timeUntilNextLoot <= 0)
                 {
-                    loadingBar.ResetBar();
                     SpawnLoot(loots);
-                    timeUntilNextLoot = lootTime * timeModifier;
+                    timeUntilNextLoot = lootTime;
                 }
             }
         }
 
-        public virtual void StartUseResource(float timeModifier = 1f)
+        public virtual void StartUseResource(float speedModifier = 1f)
         {
-            this.timeModifier = timeModifier;
-            timeUntilNextLoot = lootTime * timeModifier;
-            loadingBar.gameObject.SetActive(true);
+            this.speedModifier = speedModifier;
             isLooting = true;
+            DispatchEvent(ResourceCardEvent.ON_LOOTING_START, this);
         }
 
         public virtual void StopUseResource()
         {
             isLooting = false;
-            loadingBar.gameObject.SetActive(false);
+            DispatchEvent(ResourceCardEvent.ON_LOOTING_STOP, this);
         }
         
         protected void SpawnLoot(List<GameObject> loots) {
             var loot = loots.GetRandom();
             var spawnPoint = GetRandomSpawnPoint(resourceSpawnArea.MinLocalPoint, resourceSpawnArea.MaxLocalPoint);
             var lootObj = Instantiate(loot, spawnPoint, Quaternion.identity);
+            DispatchEvent(ResourceCardEvent.ON_LOOT_SPAWN, lootObj);
         }
         
         private Vector2 GetRandomSpawnPoint(Vector2 minPoint, Vector2 maxPoint)
@@ -74,5 +73,12 @@ namespace Permanence.Scripts.Cores
             }
             return randomPos;
         }
+    }
+
+    public static class ResourceCardEvent {
+        public const string ON_LOOTING_START = "onLootingStart";
+        public const string ON_LOOTING_PROGRESS = "onLootingProgress";
+        public const string ON_LOOTING_STOP = "onLootingStop";
+        public const string ON_LOOT_SPAWN = "onLootSpawn";
     }
 }

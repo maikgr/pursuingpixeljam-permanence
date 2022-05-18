@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6590241114819724365}
   - component: {fileID: 5876339065165096950}
   - component: {fileID: 6590241114819724354}
+  - component: {fileID: 2193688162100668954}
   m_Layer: 0
   m_Name: Crystal
   m_TagString: GameCard
@@ -95,7 +96,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 4
-  disallowedCardTypes: 
+--- !u!114 &2193688162100668954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590241114819724355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 4
+  canStackOnTypes: 04000000
 --- !u!1 &6590241115292424622
 GameObject:
   m_ObjectHideFlags: 0

@@ -553,9 +553,11 @@ GameObject:
   m_Component:
   - component: {fileID: 605769742}
   - component: {fileID: 605769741}
-  - component: {fileID: 605769740}
   - component: {fileID: 605769745}
+  - component: {fileID: 605769740}
   - component: {fileID: 605769743}
+  - component: {fileID: 605769746}
+  - component: {fileID: 605769747}
   m_Layer: 0
   m_Name: River
   m_TagString: GameCard
@@ -575,8 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f487655a35abf24d853b3fb1909be1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardType: 2
-  disallowedCardTypes: 
+  cardType: 0
 --- !u!61 &605769741
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -601,7 +602,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2}
+  m_Size: {x: 1.6, y: 2.2}
   m_EdgeRadius: 0
 --- !u!4 &605769742
 Transform:
@@ -639,7 +640,6 @@ MonoBehaviour:
   loots:
   - {fileID: 769781483183784864, guid: 5e12bdd18cf8cd54c986f739ed4d41ae, type: 3}
   - {fileID: 2597161698186578256, guid: e46ff6cf461804b47b89ea407c786e01, type: 3}
-  loadingBar: {fileID: 1837459194}
 --- !u!50 &605769745
 Rigidbody2D:
   serializedVersion: 4
@@ -648,19 +648,45 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605769739}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 20
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &605769746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605769739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba5acd06b57d894fbccaa929fcc02db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootingBar: {fileID: 1493591769}
+--- !u!114 &605769747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605769739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16ea68171e2b8640a440d3d09ba0a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 2
 --- !u!1 &938273040
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +696,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 938273041}
-  - component: {fileID: 938273042}
   m_Layer: 0
   m_Name: LootingTimeBar
   m_TagString: Untagged
@@ -695,19 +720,6 @@ Transform:
   m_Father: {fileID: 1939053016}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &938273042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938273040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ba5acd06b57d894fbccaa929fcc02db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lootingBar: {fileID: 57150823}
 --- !u!1 &1061268891
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,6 +732,7 @@ GameObject:
   - component: {fileID: 1061268893}
   - component: {fileID: 1061268895}
   - component: {fileID: 1061268894}
+  - component: {fileID: 1061268897}
   - component: {fileID: 1061268896}
   m_Layer: 0
   m_Name: Player
@@ -768,7 +781,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2}
+  m_Size: {x: 1.6, y: 2.2}
   m_EdgeRadius: 0
 --- !u!114 &1061268894
 MonoBehaviour:
@@ -783,7 +796,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 0
-  disallowedCardTypes: 
 --- !u!50 &1061268895
 Rigidbody2D:
   serializedVersion: 4
@@ -792,19 +804,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1061268891}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 20
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1061268896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,9 +826,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1061268891}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4f39160e93c1a54bb711a927414171f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardType: 0
+  canStackOnTypes: 020000000100000003000000
+--- !u!114 &1061268897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061268891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae35da6a9cd886428b213fbd372f41e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanWorkOnTypes: 02000000
 --- !u!1 &1110981255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1104,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1457690285}
   - component: {fileID: 1457690284}
-  - component: {fileID: 1457690283}
+  - component: {fileID: 1457690286}
+  - component: {fileID: 1457690287}
   m_Layer: 0
   m_Name: Base
   m_TagString: GameCard
@@ -1085,20 +1113,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1457690283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1457690282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f487655a35abf24d853b3fb1909be1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardType: 3
-  disallowedCardTypes: 
 --- !u!61 &1457690284
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1123,7 +1137,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2}
+  m_Size: {x: 1.6, y: 2.2}
   m_EdgeRadius: 0
 --- !u!4 &1457690285
 Transform:
@@ -1141,6 +1155,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1457690286
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457690282}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 20
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &1457690287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457690282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16ea68171e2b8640a440d3d09ba0a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 3
 --- !u!1 &1482601279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,7 +1433,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1837459193}
-  - component: {fileID: 1837459194}
   m_Layer: 0
   m_Name: LootingTimeBar
   m_TagString: Untagged
@@ -1410,19 +1457,6 @@ Transform:
   m_Father: {fileID: 605769742}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1837459194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837459192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ba5acd06b57d894fbccaa929fcc02db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lootingBar: {fileID: 1493591769}
 --- !u!1 &1939053011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,9 +1467,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1939053016}
   - component: {fileID: 1939053015}
-  - component: {fileID: 1939053014}
   - component: {fileID: 1939053013}
+  - component: {fileID: 1939053014}
   - component: {fileID: 1939053012}
+  - component: {fileID: 1939053017}
+  - component: {fileID: 1939053018}
   m_Layer: 0
   m_Name: Mineshaft
   m_TagString: GameCard
@@ -1462,7 +1498,6 @@ MonoBehaviour:
   loots:
   - {fileID: 769781483183784864, guid: 5e12bdd18cf8cd54c986f739ed4d41ae, type: 3}
   - {fileID: 6590241114819724355, guid: 8336c13ebfb18e640a3c446de324f7a4, type: 3}
-  loadingBar: {fileID: 938273042}
 --- !u!50 &1939053013
 Rigidbody2D:
   serializedVersion: 4
@@ -1471,19 +1506,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939053011}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 20
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1939053014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,8 +1531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f487655a35abf24d853b3fb1909be1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardType: 2
-  disallowedCardTypes: 
+  cardType: 0
 --- !u!61 &1939053015
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1522,7 +1556,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2}
+  m_Size: {x: 1.6, y: 2.2}
   m_EdgeRadius: 0
 --- !u!4 &1939053016
 Transform:
@@ -1541,3 +1575,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1939053017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939053011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba5acd06b57d894fbccaa929fcc02db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootingBar: {fileID: 57150823}
+--- !u!114 &1939053018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939053011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16ea68171e2b8640a440d3d09ba0a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 2

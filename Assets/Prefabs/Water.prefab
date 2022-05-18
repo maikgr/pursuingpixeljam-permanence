@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2597161698186578270}
   - component: {fileID: 3383107752678320869}
   - component: {fileID: 2597161698186578257}
+  - component: {fileID: 5343103265789689649}
   m_Layer: 0
   m_Name: Water
   m_TagString: GameCard
@@ -95,7 +96,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 4
-  disallowedCardTypes: 
+--- !u!114 &5343103265789689649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597161698186578256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 4
+  canStackOnTypes: 04000000
 --- !u!1 &2597161698519782589
 GameObject:
   m_ObjectHideFlags: 0
