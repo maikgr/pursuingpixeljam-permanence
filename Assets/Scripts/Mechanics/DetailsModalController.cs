@@ -8,7 +8,7 @@ using Permanence.Scripts.Cores;
 using Permanence.Scripts.Constants;
 
 namespace Permanence.Scripts.Mechanics {
-    public class DetailsModalController : EventBusBehaviour
+    public class DetailsModalController : EventBusBehaviour<GameCard>
     {
         [SerializeField]
         private RectTransform modal;
@@ -32,8 +32,10 @@ namespace Permanence.Scripts.Mechanics {
         private Vector2 modalOffset;
         private bool modalIsOpen;
         private Camera mainCamera;
+        private GameCard selectedCard;
 
-        private void Awake() {
+        protected override void Awake() {
+            base.Awake();
             mainCamera = Camera.main;
         }
 
@@ -46,7 +48,8 @@ namespace Permanence.Scripts.Mechanics {
                     var gameCard = raycast.collider.GetComponent<GameCard>();
                     if (gameCard != null)
                     {
-                        ShowModal(gameCard, (BoxCollider2D)raycast.collider);
+                        selectedCard = gameCard;
+                        ShowModal(selectedCard, (BoxCollider2D)raycast.collider);
                     }
                 }
             }
@@ -93,14 +96,14 @@ namespace Permanence.Scripts.Mechanics {
             cardInstruction.text = gameCard.cardInstruction;
 
             // Dispatch event
-            DispatchEvent(DetailsModalEvent.ON_SHOW);
+            DispatchEvent(DetailsModalEvent.ON_SHOW, selectedCard);
             modal.gameObject.SetActive(true);
             modalIsOpen = true;
         }
 
         public void HideModal()
         {
-            DispatchEvent(DetailsModalEvent.ON_HIDE);
+            DispatchEvent(DetailsModalEvent.ON_HIDE, selectedCard);
             modal.gameObject.SetActive(false);
             modalIsOpen =  false;
         }
