@@ -8,7 +8,7 @@ using Permanence.Scripts.Cores;
 namespace Permanence.Scripts.Mechanics
 {
     [RequireComponent(typeof(SelectableCard))]
-    public class StackableCard : GameCard
+    public class StackableCard : EventBusBehaviour<GameCard>
     {
         [SerializeField]
         private List<CardType> canStackOnTypes;

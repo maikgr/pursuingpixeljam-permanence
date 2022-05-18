@@ -3,19 +3,20 @@ using System.Linq;
 using System.Collections;
 using UnityEngine;
 using Permanence.Scripts.Cores;
+using Permanence.Scripts.Extensions;
 using System;
 
 namespace Permanence.Scripts.Mechanics
 {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class SelectableCard : GameCard<SelectableCard>
+    public class SelectableCard : EventBusBehaviour<SelectableCard>
     {
         private Rigidbody2D body2D;
         private Collider2D cardCollider;
         private Camera mainCamera;
         private Vector3 mouseOffset;
-        public Vector2 CurrentPosition { get; private set; }
+        public Vector2 CurrentPosition => body2D.position;
         public Collider2D attachedCollider => cardCollider;
 
         protected override void Awake() {
@@ -23,30 +24,22 @@ namespace Permanence.Scripts.Mechanics
             cardCollider = GetComponent<Collider2D>();
             body2D = GetComponent<Rigidbody2D>();
             mainCamera = Camera.main;
-            CurrentPosition = transform.position;
         }
 
         private void OnMouseDown() {
-            mouseOffset = transform.position - WorldMousePosition;
+            mouseOffset = transform.position - mainCamera.WorldMousePosition();
             cardCollider.enabled = false;
             DispatchEvent(SelectableCardEvent.ON_SELECTED, this);
         }
 
         private void OnMouseDrag() {
-            CurrentPosition = (Vector2)(WorldMousePosition + mouseOffset);
-            body2D.position = CurrentPosition;
+            body2D.position = (Vector2)(mainCamera.WorldMousePosition() + mouseOffset);
             DispatchEvent(SelectableCardEvent.ON_MOVING, this);
         }
 
         private void OnMouseUp() {
             cardCollider.enabled = true;
             DispatchEvent(SelectableCardEvent.ON_DROPPED, this);
-        }
-
-        private Vector3 WorldMousePosition {
-            get {
-                return mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            }
         }
     }
 
