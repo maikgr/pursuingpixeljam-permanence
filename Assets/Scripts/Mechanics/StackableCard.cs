@@ -50,7 +50,11 @@ namespace Permanence.Scripts.Mechanics
                         DispatchEvent(StackableCardEvent.ON_STACKED, stackedCard);
                         targetCollider.enabled = false;
                         stackedCollider = targetCollider;
-                        cardBody.position = new Vector3(
+                        cardBody.position = new Vector2(
+                            targetCard.transform.position.x + placementOffset.x,
+                            targetCard.transform.position.y + placementOffset.y
+                        );
+                        transform.position = new Vector3(
                             targetCard.transform.position.x + placementOffset.x,
                             targetCard.transform.position.y + placementOffset.y,
                             targetCard.transform.position.z - 1

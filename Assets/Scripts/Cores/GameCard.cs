@@ -1,4 +1,5 @@
 using Permanence.Scripts.Constants;
+using UnityEngine;
 
 namespace Permanence.Scripts.Cores
 {
@@ -8,6 +9,7 @@ namespace Permanence.Scripts.Cores
         public string cardName;
         public string cardDescription;
         public string cardInstruction;
+        public Sprite cardSprite;
     }
 
     public class GameCard : GameCard<GameCard>

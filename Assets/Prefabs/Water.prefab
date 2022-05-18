@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3383107752678320869}
   - component: {fileID: 2597161698186578257}
   - component: {fileID: 5343103265789689649}
+  - component: {fileID: 3066218107853361270}
   m_Layer: 0
   m_Name: Water
   m_TagString: GameCard
@@ -95,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f487655a35abf24d853b3fb1909be1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardType: 4
+  spriteRenderer: {fileID: 2597161698519782587}
 --- !u!114 &5343103265789689649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,8 +109,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardType: 4
   canStackOnTypes: 04000000
+--- !u!114 &3066218107853361270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597161698186578256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16ea68171e2b8640a440d3d09ba0a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 4
+  cardName: Water
+  cardDescription: Water
+  cardInstruction: 
+  cardSprite: {fileID: 21300000, guid: 5f6844303ce857043a5c216a5f61b2dd, type: 3}
 --- !u!1 &2597161698519782589
 GameObject:
   m_ObjectHideFlags: 0

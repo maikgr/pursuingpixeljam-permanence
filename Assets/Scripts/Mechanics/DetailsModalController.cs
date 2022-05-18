@@ -11,6 +11,8 @@ namespace Permanence.Scripts.Mechanics {
     public class DetailsModalController : EventBusBehaviour<GameCard>
     {
         [SerializeField]
+        private Canvas canvas;
+        [SerializeField]
         private RectTransform modal;
         [SerializeField]
         private RectTransform background;
@@ -23,20 +25,25 @@ namespace Permanence.Scripts.Mechanics {
         [SerializeField]
         private RectTransform closeButton;
         [SerializeField]
-        private Image slotPrefab;
-        [SerializeField]
-        private Vector2 modalPadding;
-        [SerializeField]
-        private float textMargin;
+        private RectTransform submitButton;
         [SerializeField]
         private Vector2 modalOffset;
+        [SerializeField]
+        private List<DetailsModalSlotController> materialSlots;
         private bool modalIsOpen;
         private Camera mainCamera;
         private GameCard selectedCard;
+        private List<float> bgWidthPreset;
 
         protected override void Awake() {
             base.Awake();
             mainCamera = Camera.main;
+            bgWidthPreset = new List<float> {
+                350,
+                460,
+                550,
+                640
+            };
         }
 
         private void Update() {
@@ -61,57 +68,66 @@ namespace Permanence.Scripts.Mechanics {
 
         public void ShowModal(GameCard gameCard, BoxCollider2D collider)
         {
-            // Adjust card size
-            var titleSize = cardName.GetPreferredValues(gameCard.cardName, cardName.rectTransform.rect.width, cardName.rectTransform.rect.height);
-            var descriptionSize = cardDescription.GetPreferredValues(gameCard.cardDescription, cardDescription.rectTransform.rect.width, cardDescription.rectTransform.rect.height);
-            var instructionSize = cardInstruction.GetPreferredValues(gameCard.cardInstruction, cardInstruction.rectTransform.rect.width, cardInstruction.rectTransform.rect.height);
-            background.sizeDelta = new Vector2(
-                cardDescription.rectTransform.rect.width + (modalPadding.x * 2),
-                titleSize.y + descriptionSize.y + instructionSize.y + closeButton.rect.height + (textMargin * 3) + (modalPadding.y * 2)
-            );
-
-            // Adjust text position
-            cardDescription.rectTransform.position = new Vector2(
-                cardDescription.rectTransform.position.x,
-                cardName.rectTransform.position.y - titleSize.y - textMargin
-            );
-            cardInstruction.rectTransform.position = new Vector2(
-                cardInstruction.rectTransform.position.x,
-                cardDescription.rectTransform.position.y - descriptionSize.y - textMargin
-            );
-            closeButton.position = new Vector2(
-                closeButton.position.x,
-                cardInstruction.rectTransform.position.y - instructionSize.y - textMargin
-            );
+            AdjustModalDimension(gameCard, collider);
 
             // Calculate position on screen
-            var boundMax = mainCamera.WorldToScreenPoint(
-                collider.bounds.max
-            );
-            modal.position = boundMax + (Vector3)modalOffset;
+            modal.position = collider.bounds.max + (Vector3)modalOffset;
 
             // Set texts
             cardName.text = gameCard.cardName;
             cardDescription.text = gameCard.cardDescription;
             cardInstruction.text = gameCard.cardInstruction;
 
-            // Dispatch event
-            DispatchEvent(DetailsModalEvent.ON_SHOW, selectedCard);
             modal.gameObject.SetActive(true);
             modalIsOpen = true;
         }
 
+        private void AdjustModalDimension(GameCard gameCard, BoxCollider2D collider)
+        {
+            // Disable all material slots
+            materialSlots.ForEach(slot => {
+                slot.ClearSlot();
+                slot.gameObject.SetActive(false);
+            });
+            // Check if card requires materials
+            var numberOfSlots = 0;
+            var consumerCard = gameCard.gameObject.GetComponent<MaterialConsumerCard>();
+            if (consumerCard != null)
+            {
+                numberOfSlots = Mathf.Min(materialSlots.Count, consumerCard.requiredMaterials.Count);
+                for (var i = 0; i < materialSlots.Count; ++i)
+                {
+                    if (i < consumerCard.requiredMaterials.Count)
+                    {
+                        materialSlots[i].SetSlotRequirement(consumerCard.requiredMaterials[i].cardType);
+                        materialSlots[i].gameObject.SetActive(true);
+                    }
+                }
+            }
+
+            background.sizeDelta = new Vector2(bgWidthPreset[numberOfSlots], background.sizeDelta.y);
+
+            // Show submit button if this requires material
+            if (numberOfSlots > 0)
+            {
+                submitButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                submitButton.gameObject.SetActive(false);
+            }
+        }
+
         public void HideModal()
         {
-            DispatchEvent(DetailsModalEvent.ON_HIDE, selectedCard);
+            submitButton.gameObject.SetActive(false);
             modal.gameObject.SetActive(false);
-            modalIsOpen =  false;
+            modalIsOpen = false;
         }
-    }
 
-    public static class DetailsModalEvent
-    {
-        public const string ON_SHOW = "onShow";
-        public const string ON_HIDE = "onHide";
+        public void onSubmit()
+        {
+            HideModal();
+        }
     }
 }

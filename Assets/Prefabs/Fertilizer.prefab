@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 498268047301132017}
   - component: {fileID: 769781483183784867}
   - component: {fileID: 6335006341327807927}
+  - component: {fileID: 4809034854606076751}
   m_Layer: 0
   m_Name: Fertilizer
   m_TagString: GameCard
@@ -179,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f487655a35abf24d853b3fb1909be1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardType: 4
+  spriteRenderer: {fileID: 769781482813878249}
 --- !u!114 &6335006341327807927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,5 +193,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardType: 4
   canStackOnTypes: 04000000
+--- !u!114 &4809034854606076751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769781483183784864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16ea68171e2b8640a440d3d09ba0a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardType: 4
+  cardName: Fertilizer
+  cardDescription: A fertilizer.
+  cardInstruction: 
+  cardSprite: {fileID: 21300000, guid: 4b33d65688e5359478b9d66896c1430c, type: 3}

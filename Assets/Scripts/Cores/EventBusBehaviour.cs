@@ -63,4 +63,34 @@ namespace Permanence.Scripts.Cores
             eventBus[eventName].ForEach(action => action.Invoke(value));
         }
     }
+
+    public abstract class EventBusBehaviour<T, TResult> : MonoBehaviour
+    {
+        private IDictionary<string, List<Func<T, TResult>>> eventBus;
+
+        protected virtual void Awake()
+        {
+            eventBus = new Dictionary<string, List<Func<T, TResult>>>();
+        }
+
+        public virtual void AddEventListener(string eventName, Func<T, TResult> action)
+        {
+            if (!eventBus.ContainsKey(eventName)) {
+                eventBus.Add(eventName, new List<Func<T, TResult>>());
+            }
+            eventBus[eventName].Add(action);
+        }
+
+        public virtual void RemoveEventListener(string eventName, Func<T, TResult> action)
+        {
+            if (!eventBus.ContainsKey(eventName)) return;
+            eventBus[eventName].Remove(action);
+        }
+
+        public virtual void DispatchEvent(string eventName, T value)
+        {
+            if (!eventBus.ContainsKey(eventName)) return;
+            eventBus[eventName].ForEach(action => action.Invoke(value));
+        }
+    }
 }
