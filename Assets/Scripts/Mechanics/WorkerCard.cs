@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using Permanence.Scripts.Constants;
 using Permanence.Scripts.Cores;
 
@@ -12,6 +13,7 @@ namespace Permanence.Scripts.Mechanics
         [SerializeField]
         private List<CardType> CanWorkOnTypes;
         private StackableCard card;
+        private CardType[] resources = new CardType[2] { CardType.River, CardType.Mineshaft };
 
         private void Awake() {
             card = GetComponent<StackableCard>();
@@ -28,14 +30,14 @@ namespace Permanence.Scripts.Mechanics
         }
 
         private void StartWorking(GameCard other) {
-            if (other.cardType == CardType.Resource) {
+            if (resources.Any(res => res.Equals(other.cardType))) {
                 var resource = other.gameObject.GetComponent<ResourceCardBehaviour>();
                 resource.StartUseResource();
             }
         }
 
         private void StopWorking(GameCard other) {
-            if (other.cardType == CardType.Resource) {
+            if (resources.Any(res => res.Equals(other.cardType))) {
                 var resource = other.gameObject.GetComponent<ResourceCardBehaviour>();
                 resource.StopUseResource();
             }

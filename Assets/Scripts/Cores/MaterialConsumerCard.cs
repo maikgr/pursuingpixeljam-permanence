@@ -4,21 +4,24 @@ using System.Collections.Generic;
 using System.Linq;
 using Permanence.Scripts.Cores;
 using Permanence.Scripts.Constants;
+using Permanence.Scripts.Entities;
 
 namespace Permanence.Scripts.Mechanics
 {
-    public class MaterialConsumerCard : EventBusBehaviour<MaterialConsumerCard>
+    public abstract class MaterialConsumerCard : EventBusBehaviour<CardProgressBar>
     {
         [SerializeField]
         public List<MaterialConsumerGameCard> requiredMaterials;
-        private DetailsModalController detailsModal;
+        protected DetailsModalController detailsModal;
 
-        protected override void Awake() {
+        #pragma warning disable 0114
+        protected virtual void Awake() {
             base.Awake();
             detailsModal = GameObject.FindGameObjectWithTag(GameTags.GameCanvas).GetComponent<DetailsModalController>();
         }
+        #pragma warning restore 0114
 
-        public void AddMaterial(GameCard gameCard, int index)
+        public virtual void AddMaterial(GameCard gameCard, int index)
         {
             if (gameCard.cardType.Equals(requiredMaterials[index].cardType))
             {
@@ -27,12 +30,7 @@ namespace Permanence.Scripts.Mechanics
             }
         }
         
-        public bool SubmitMaterial()
-        {
-            if (requiredMaterials.Any(mat => !mat.isFulfilled)) return false;
-            GameObject.Destroy(this, 0.5f);
-            return true;
-        }
+        public abstract bool SubmitMaterial();
     }
 
     [Serializable]

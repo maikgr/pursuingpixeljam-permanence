@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4b33d65688e5359478b9d66896c1430c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00dc47f8d4bde7f498ba11c4241e64bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 6335006341327807927}
   - component: {fileID: 4809034854606076751}
   m_Layer: 0
-  m_Name: Fertilizer
+  m_Name: Fish
   m_TagString: GameCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canStackOnTypes: 04000000
+  canStackOnTypes: 08000000
 --- !u!114 &4809034854606076751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,8 +206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16ea68171e2b8640a440d3d09ba0a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardType: 4
-  cardName: Fertilizer
-  cardDescription: A fertilizer.
+  cardType: 8
+  cardName: Fish
+  cardDescription: "Can be prepared and eaten in dozens of ways. Nutritious, fresh,
+    and tasty, what\u2019s not to love?"
   cardInstruction: 
-  cardSprite: {fileID: 21300000, guid: 4b33d65688e5359478b9d66896c1430c, type: 3}
+  cardSprite: {fileID: 21300000, guid: 00dc47f8d4bde7f498ba11c4241e64bf, type: 3}

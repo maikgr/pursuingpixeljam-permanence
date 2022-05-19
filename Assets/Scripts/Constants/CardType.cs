@@ -6,8 +6,15 @@ namespace Permanence.Scripts.Constants
     {
         Player,
         Ancestor,
-        Resource,
-        Base,
-        Material
+        River,
+        Mineshaft,
+        House,
+        Kitchen,
+        Workshop,
+        Water,
+        Fish,
+        Stone,
+        Everfruit,
+        Everbud
     }
 }

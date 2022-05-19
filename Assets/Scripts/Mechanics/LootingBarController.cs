@@ -1,46 +1,46 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Permanence.Scripts.Cores;
+using Permanence.Scripts.Entities;
 using System;
 
 namespace Permanence.Scripts.Mechanics
 {
-    [RequireComponent(typeof(ResourceCardBehaviour))]
+    [RequireComponent(typeof(EventBusBehaviour<CardProgressBar>))]
     public class LootingBarController : MonoBehaviour
     {
         [SerializeField]
         private Transform lootingBar;
-        private ResourceCardBehaviour resourceCard;
+        private EventBusBehaviour<CardProgressBar> resourceCard;
 
         private void Awake() {
-            resourceCard = GetComponent<ResourceCardBehaviour>();
+            resourceCard = GetComponent<EventBusBehaviour<CardProgressBar>>();
             lootingBar.gameObject.SetActive(false);
         }
 
         private void Start() {
-            resourceCard.AddEventListener(ResourceCardEvent.ON_LOOTING_PROGRESS, SetPercentage);
-            resourceCard.AddEventListener(ResourceCardEvent.ON_LOOTING_START, ShowLootingBar);
-            resourceCard.AddEventListener(ResourceCardEvent.ON_LOOTING_STOP, HideLootingBar);
+            resourceCard.AddEventListener(CardProgressBarEvent.ON_LOOTING_PROGRESS, SetPercentage);
+            resourceCard.AddEventListener(CardProgressBarEvent.ON_LOOTING_START, ShowLootingBar);
+            resourceCard.AddEventListener(CardProgressBarEvent.ON_LOOTING_STOP, HideLootingBar);
         }
 
         private void OnDestroy() {
-            resourceCard.RemoveEventListener(ResourceCardEvent.ON_LOOTING_PROGRESS, SetPercentage);
-            resourceCard.RemoveEventListener(ResourceCardEvent.ON_LOOTING_START, ShowLootingBar);
-            resourceCard.RemoveEventListener(ResourceCardEvent.ON_LOOTING_STOP, HideLootingBar);
+            resourceCard.RemoveEventListener(CardProgressBarEvent.ON_LOOTING_PROGRESS, SetPercentage);
+            resourceCard.RemoveEventListener(CardProgressBarEvent.ON_LOOTING_START, ShowLootingBar);
+            resourceCard.RemoveEventListener(CardProgressBarEvent.ON_LOOTING_STOP, HideLootingBar);
         }
 
-        private void ShowLootingBar(dynamic value) {
+        private void ShowLootingBar(CardProgressBar cardProgressBar) {
             lootingBar.gameObject.SetActive(true);
         }
 
-        private void HideLootingBar(dynamic value) {
+        private void HideLootingBar(CardProgressBar cardProgressBar) {
             lootingBar.gameObject.SetActive(false);
         }
 
-        private void SetPercentage(dynamic percentage)
+        private void SetPercentage(CardProgressBar cardProgressBar)
         {
-            var progress = (float)percentage;
-            lootingBar.localPosition = new Vector2(0 - progress * lootingBar.localScale.x, 0);
+            lootingBar.localPosition = new Vector2(0 - cardProgressBar.Value * lootingBar.localScale.x, 0);
         }
     }
 }

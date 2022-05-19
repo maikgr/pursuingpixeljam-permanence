@@ -6,7 +6,7 @@ using Permanence.Scripts.Extensions;
 
 namespace Permanence.Scripts.Cores
 {
-    public abstract class ResourceCardBehaviour : EventBusBehaviour<dynamic>
+    public abstract class ResourceCardBehaviour : EventBusBehaviour<CardProgressBar>
     {
         [SerializeField]
         private ResourceSpawnArea resourceSpawnArea;
@@ -17,11 +17,13 @@ namespace Permanence.Scripts.Cores
         private float timeUntilNextLoot;
         private bool isLooting;
         private float speedModifier = 1f;
+        private CardProgressBar cardProgressBar;
 
         #pragma warning disable 0114
         protected virtual void Awake() {
             base.Awake();
             timeUntilNextLoot = lootTime;
+            cardProgressBar = new CardProgressBar();
         }
         #pragma warning restore 0114
 
@@ -29,7 +31,8 @@ namespace Permanence.Scripts.Cores
             if (isLooting)
             {
                 timeUntilNextLoot -= Time.deltaTime * speedModifier;
-                    DispatchEvent(ResourceCardEvent.ON_LOOTING_PROGRESS, timeUntilNextLoot/lootTime);
+                cardProgressBar.Value = timeUntilNextLoot/lootTime;
+                DispatchEvent(CardProgressBarEvent.ON_LOOTING_PROGRESS, cardProgressBar);
                 if (timeUntilNextLoot <= 0)
                 {
                     SpawnLoot(loots);
@@ -42,20 +45,21 @@ namespace Permanence.Scripts.Cores
         {
             this.speedModifier = speedModifier;
             isLooting = true;
-            DispatchEvent(ResourceCardEvent.ON_LOOTING_START, this);
+            cardProgressBar.IsShow = true;
+            DispatchEvent(CardProgressBarEvent.ON_LOOTING_START, cardProgressBar);
         }
 
         public virtual void StopUseResource()
         {
             isLooting = false;
-            DispatchEvent(ResourceCardEvent.ON_LOOTING_STOP, this);
+            cardProgressBar.IsShow = false;
+            DispatchEvent(CardProgressBarEvent.ON_LOOTING_STOP, cardProgressBar);
         }
         
         protected void SpawnLoot(List<GameObject> loots) {
             var loot = loots.GetRandom();
             var spawnPoint = GetRandomSpawnPoint(resourceSpawnArea.MinLocalPoint, resourceSpawnArea.MaxLocalPoint);
             var lootObj = Instantiate(loot, spawnPoint, Quaternion.identity);
-            DispatchEvent(ResourceCardEvent.ON_LOOT_SPAWN, lootObj);
         }
         
         private Vector2 GetRandomSpawnPoint(Vector2 minPoint, Vector2 maxPoint)
@@ -73,12 +77,5 @@ namespace Permanence.Scripts.Cores
             }
             return randomPos;
         }
-    }
-
-    public static class ResourceCardEvent {
-        public const string ON_LOOTING_START = "onLootingStart";
-        public const string ON_LOOTING_PROGRESS = "onLootingProgress";
-        public const string ON_LOOTING_STOP = "onLootingStop";
-        public const string ON_LOOT_SPAWN = "onLootSpawn";
     }
 }
