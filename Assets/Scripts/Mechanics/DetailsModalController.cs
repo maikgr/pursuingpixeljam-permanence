@@ -101,8 +101,10 @@ namespace Permanence.Scripts.Mechanics {
                 {
                     if (i < consumerCard.requiredMaterials.Count)
                     {
-                        materialSlots[i].SetSlotRequirement(consumerCard.requiredMaterials[i].cardType);
-                        materialSlots[i].gameObject.SetActive(true);
+                        var requiredMaterial = consumerCard.requiredMaterials[i];
+                        var materialSlot = materialSlots[i];
+                        materialSlot.SetSlotRequirement(requiredMaterial.cardType, consumerCard, i);
+                        materialSlot.gameObject.SetActive(true);
                     }
                 }
             }
@@ -110,14 +112,7 @@ namespace Permanence.Scripts.Mechanics {
             background.sizeDelta = new Vector2(bgWidthPreset[numberOfSlots], background.sizeDelta.y);
 
             // Show submit button if this requires material
-            if (numberOfSlots > 0)
-            {
-                submitButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                submitButton.gameObject.SetActive(false);
-            }
+            submitButton.gameObject.SetActive(numberOfSlots > 0);
         }
 
         public void HideModal()
@@ -129,7 +124,22 @@ namespace Permanence.Scripts.Mechanics {
 
         public void onSubmit()
         {
-            HideModal();
+            var consumerCard = selectedCard.gameObject.GetComponent<MaterialConsumerCard>();
+            if (consumerCard != null)
+            {
+                if (consumerCard.SubmitMaterial())
+                {
+                    HideModal();
+                }
+                else
+                {
+                    // Show warning
+                }
+            }
+            else
+            {
+                HideModal();
+            }
         }
     }
 }

@@ -383,6 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialImage: {fileID: 169581004}
   materialText: {fileID: 1929376645}
+  defaultColor: {r: 0.24313726, g: 0.40392157, b: 0.38431373, a: 1}
 --- !u!1 &357857143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2360,7 +2361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1345878522
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3752,6 +3753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialImage: {fileID: 1972716312}
   materialText: {fileID: 913757354}
+  defaultColor: {r: 0.24313726, g: 0.40392157, b: 0.38431373, a: 1}
 --- !u!1 &1984502971
 GameObject:
   m_ObjectHideFlags: 0
@@ -4080,6 +4082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialImage: {fileID: 2054968113864597110}
   materialText: {fileID: 2054968114780982113}
+  defaultColor: {r: 0.24313726, g: 0.40392157, b: 0.38431373, a: 1}
 --- !u!224 &2054968114780982112
 RectTransform:
   m_ObjectHideFlags: 0

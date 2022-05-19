@@ -20,7 +20,7 @@ namespace Permanence.Scripts.Mechanics
 
         public void AddMaterial(GameCard gameCard, int index)
         {
-            if (gameCard.gameObject.Equals(gameObject))
+            if (gameCard.cardType.Equals(requiredMaterials[index].cardType))
             {
                 requiredMaterials[index].material = gameCard;
                 requiredMaterials[index].isFulfilled = true;
