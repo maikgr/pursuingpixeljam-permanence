@@ -38,9 +38,9 @@ namespace Permanence.Scripts.Mechanics
 
         private void OnCardDropped(SelectableCard card)
         {
-            var raycasts = new RaycastHit2D[10];
-            var contacts = card.attachedCollider.Cast(Vector2.zero, raycasts);
-            var targetCollider = raycasts.FirstOrDefault(cast => cast.collider != null).collider;
+            var results = new RaycastHit2D[10];
+            var contacts = card.attachedCollider.Cast(Vector2.zero, results, Mathf.Infinity);
+            var targetCollider = results.FirstOrDefault(cast => cast.collider != null).collider;
             if (targetCollider != null)
             {
                 var targetCard = targetCollider.GetComponent<GameCard>();
@@ -66,7 +66,6 @@ namespace Permanence.Scripts.Mechanics
                         DispatchEvent(StackableCardEvent.ON_NOT_ALLOWED, stackedCard);
                         var magnitude = 1000f;
                         var pushDirection = transform.position - targetCard.transform.position;
-                        Debug.Log(pushDirection);
                         cardBody.AddForce(pushDirection.normalized * magnitude);
                     }
                 }

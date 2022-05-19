@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 using Permanence.Scripts.Cores;
 using Permanence.Scripts.Constants;
@@ -13,17 +14,22 @@ namespace Permanence.Scripts.Mechanics {
         private Image materialImage;
         [SerializeField]
         private TMP_Text materialText;
-        private CardType slotCardType;
+        public CardType RequiredCardType { get; private set;}
+        private Camera mainCamera;
+
+        private void Awake() {
+            mainCamera = Camera.main;
+        }
 
         public void SetSlotRequirement(CardType cardType)
         {
             materialText.text = cardType.ToString();
-            slotCardType = cardType;
+            RequiredCardType = cardType;
         }
 
         public bool TrySetSlot(GameCard gameCard)
         {
-            if (!slotCardType.Equals(gameCard.cardType)) return false;
+            if (!RequiredCardType.Equals(gameCard.cardType)) return false;
             materialImage.sprite = gameCard.cardSprite;
             return true;
         }

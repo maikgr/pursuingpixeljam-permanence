@@ -6,14 +6,15 @@ TagManager:
   tags:
   - GameCard
   - GameCanvas
+  - CanvasGameCard
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Game Board
   - Water
   - UI
-  - 
+  - Material Slot
   - 
   - 
   - 

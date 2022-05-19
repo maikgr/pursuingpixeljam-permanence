@@ -1,4 +1,4 @@
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,9 +6,10 @@ using TMPro;
 using Permanence.Scripts.Extensions;
 using Permanence.Scripts.Cores;
 using Permanence.Scripts.Constants;
+using UnityEngine.EventSystems;
 
 namespace Permanence.Scripts.Mechanics {
-    public class DetailsModalController : EventBusBehaviour<GameCard>
+    public class DetailsModalController : MonoBehaviour
     {
         [SerializeField]
         private Canvas canvas;
@@ -30,13 +31,14 @@ namespace Permanence.Scripts.Mechanics {
         private Vector2 modalOffset;
         [SerializeField]
         private List<DetailsModalSlotController> materialSlots;
+        [SerializeField]
+        private GraphicRaycaster graphicRaycaster;
         private bool modalIsOpen;
         private Camera mainCamera;
         private GameCard selectedCard;
         private List<float> bgWidthPreset;
 
-        protected override void Awake() {
-            base.Awake();
+        private void Awake() {
             mainCamera = Camera.main;
             bgWidthPreset = new List<float> {
                 350,

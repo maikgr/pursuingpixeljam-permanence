@@ -4,5 +4,6 @@ namespace Permanence.Scripts.Constants
     {
         public const string GameCard = "GameCard";
         public const string GameCanvas = "GameCanvas";
+        public const string CanvasGameCard = "CanvasGameCard";
     }
 }
