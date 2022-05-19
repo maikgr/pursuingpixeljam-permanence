@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 169581005}
   - component: {fileID: 169581004}
   - component: {fileID: 169581006}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Slot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -857,6 +857,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -930,6 +931,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1fc5d26c2b00f94aaf02ed0064e5987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 519420031}
+  speed: 15
 --- !u!1 &522943742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,7 +1530,7 @@ GameObject:
   - component: {fileID: 913757353}
   - component: {fileID: 913757355}
   - component: {fileID: 913757354}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: SlotName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2422,7 +2437,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1345878522}
-  - component: {fileID: 1345878524}
   - component: {fileID: 1345878523}
   m_Layer: 5
   m_Name: DetailsModal
@@ -2473,36 +2487,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1692266225}
---- !u!114 &1345878524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345878521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 5
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1345878523}
-          m_TargetAssemblyTypeName: Permanence.Scripts.Mechanics.MovableModalController,
-            Assembly-CSharp
-          m_MethodName: DragHandler
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1445082807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3068,7 +3052,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1692266225
 Canvas:
   m_ObjectHideFlags: 0
@@ -3078,7 +3062,7 @@ Canvas:
   m_GameObject: {fileID: 1692266222}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 2
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 10
   m_PixelPerfect: 0
@@ -3098,19 +3082,20 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692266222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -490}
+  m_LocalScale: {x: 0.018181818, y: 0.018181818, z: 0.018181818}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1345878522}
+  - {fileID: 1815462257}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_SizeDelta: {x: 1760, y: 990.00006}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1692266227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3131,11 +3116,12 @@ MonoBehaviour:
   cardInstruction: {fileID: 778369171}
   closeButton: {fileID: 2110785695}
   submitButton: {fileID: 1112336054}
-  modalOffset: {x: 0, y: 0}
+  modalOffset: {x: 0.2, y: 0.1}
   materialSlots:
   - {fileID: 2054968113864597112}
   - {fileID: 169581006}
   - {fileID: 1972716314}
+  graphicRaycaster: {fileID: 1692266223}
 --- !u!1 &1762818389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3271,6 +3257,97 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762818389}
   m_CullTransparentMesh: 1
+--- !u!1 &1815462256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1815462257}
+  - component: {fileID: 1815462259}
+  - component: {fileID: 1815462258}
+  - component: {fileID: 1815462261}
+  m_Layer: 5
+  m_Name: CanvasGameCard
+  m_TagString: CanvasGameCard
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1815462257
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815462256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1692266226}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 113, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1815462258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815462256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1815462259
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815462256}
+  m_CullTransparentMesh: 1
+--- !u!114 &1815462261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815462256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5290cb2c699164aa4611035ef0f5cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectableCard: {fileID: 0}
+  graphicRaycaster: {fileID: 1692266223}
 --- !u!1 &1837459192
 GameObject:
   m_ObjectHideFlags: 0
@@ -3315,7 +3392,7 @@ GameObject:
   - component: {fileID: 1929376644}
   - component: {fileID: 1929376646}
   - component: {fileID: 1929376645}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: SlotName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3603,7 +3680,7 @@ GameObject:
   - component: {fileID: 1972716313}
   - component: {fileID: 1972716312}
   - component: {fileID: 1972716314}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Slot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3830,7 +3907,7 @@ GameObject:
   - component: {fileID: 2054968113864597111}
   - component: {fileID: 2054968113864597110}
   - component: {fileID: 2054968113864597112}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Slot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4038,7 +4115,7 @@ GameObject:
   - component: {fileID: 2054968114780982112}
   - component: {fileID: 2054968114780982114}
   - component: {fileID: 2054968114780982113}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: SlotName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
