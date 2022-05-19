@@ -10,22 +10,22 @@ using System;
 
 namespace Permanence.Scripts.Mechanics
 {
-    public class MovableModalController : MonoBehaviour
+    public class MovableModalController : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         [SerializeField]
         private Canvas canvas;
+        private Vector3 offset;
 
-        public void DragHandler(BaseEventData data)
+        public void OnBeginDrag(PointerEventData pointerData)
         {
-            var pointerData = (PointerEventData)data;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                (RectTransform)canvas.transform,
-                pointerData.position + (Vector2)transform.position,
-                canvas.worldCamera,
-                out Vector2 mousePosition
-            );
+            var rectTransform = (RectTransform)transform;
+            offset = rectTransform.anchoredPosition - (Vector2)Input.mousePosition;
+        }
 
-            transform.position = canvas.transform.TransformPoint(mousePosition);
+        public void OnDrag(PointerEventData pointerData)
+        {
+            var rectTransform = (RectTransform)transform;
+            rectTransform.anchoredPosition = Input.mousePosition + offset;
         }
     }
 }
