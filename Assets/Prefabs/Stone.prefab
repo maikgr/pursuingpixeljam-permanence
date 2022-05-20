@@ -127,7 +127,7 @@ MonoBehaviour:
   cardDescription: A great building material, used in most construction projects.
     Contrary to popular belief, it is not weak to paper.
   cardInstruction: 
-  cardSprite: {fileID: 21300000, guid: 30ea7a52a47a1b44eb561b5c2f031f3f, type: 3}
+  cardSprite: {fileID: -1627059902095274846, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!1 &6590241115292424622
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 30ea7a52a47a1b44eb561b5c2f031f3f, type: 3}
+  m_Sprite: {fileID: -1627059902095274846, guid: a1327b4095717a84db78a3493394fded, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

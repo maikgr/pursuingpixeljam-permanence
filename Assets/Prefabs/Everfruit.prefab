@@ -127,7 +127,7 @@ MonoBehaviour:
   cardDescription: Little gifts from your Evertree. Dearly loved by the populace,
     and widely used in many delectable recipes.
   cardInstruction: 
-  cardSprite: {fileID: 21300000, guid: 19969b2a755b4b44fb6f4bbb44004232, type: 3}
+  cardSprite: {fileID: 178396450048254015, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!1 &2281952316904943893
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 19969b2a755b4b44fb6f4bbb44004232, type: 3}
+  m_Sprite: {fileID: 178396450048254015, guid: a1327b4095717a84db78a3493394fded, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

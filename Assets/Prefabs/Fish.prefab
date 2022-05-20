@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 00dc47f8d4bde7f498ba11c4241e64bf, type: 3}
+  m_Sprite: {fileID: 6563070284310214681, guid: a1327b4095717a84db78a3493394fded, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -211,4 +211,4 @@ MonoBehaviour:
   cardDescription: "Can be prepared and eaten in dozens of ways. Nutritious, fresh,
     and tasty, what\u2019s not to love?"
   cardInstruction: 
-  cardSprite: {fileID: 21300000, guid: 00dc47f8d4bde7f498ba11c4241e64bf, type: 3}
+  cardSprite: {fileID: 6563070284310214681, guid: a1327b4095717a84db78a3493394fded, type: 3}

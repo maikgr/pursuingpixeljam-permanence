@@ -307,7 +307,7 @@ MonoBehaviour:
     with their administrative duties\u2013 it seems like yours is the most exciting
     job!"
   cardInstruction: 
-  cardSprite: {fileID: 21300000, guid: d37d49d6049ff2342afac37e6399e9b5, type: 3}
+  cardSprite: {fileID: 8883374863942664610, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!114 &7913285197359822324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,12 +427,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d37d49d6049ff2342afac37e6399e9b5, type: 3}
+  m_Sprite: {fileID: 8883374863942664610, guid: a1327b4095717a84db78a3493394fded, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

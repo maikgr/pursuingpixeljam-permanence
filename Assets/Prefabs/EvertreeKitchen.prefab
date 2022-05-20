@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 08a53cb2e6e7bcf458686521b15dd5c2, type: 3}
+  m_Sprite: {fileID: -3054907766096214091, guid: a1327b4095717a84db78a3493394fded, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
     also be used for dining (or small meals such as breakfast), entertaining and
     laundry.
   cardInstruction: 
-  cardSprite: {fileID: 21300000, guid: 08a53cb2e6e7bcf458686521b15dd5c2, type: 3}
+  cardSprite: {fileID: -3054907766096214091, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!114 &562934066871751873
 MonoBehaviour:
   m_ObjectHideFlags: 0

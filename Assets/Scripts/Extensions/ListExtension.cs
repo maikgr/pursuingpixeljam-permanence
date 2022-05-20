@@ -11,6 +11,12 @@ namespace Permanence.Scripts.Extensions
             return list[randIndex];
         }
 
+        public static T GetRandom<T>(this T[] array)
+        {
+            var randIndex = Random.Range(0, array.Length);
+            return array[randIndex];
+        }
+
         public static int LastIndex<T>(this List<T> list)
         {
             return list.Count - 1;

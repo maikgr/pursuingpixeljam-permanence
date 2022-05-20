@@ -15,6 +15,8 @@ namespace Permanence.Scripts.Constants
         Fish,
         Stone,
         Everfruit,
-        Everbud
+        Everbud,
+        Bandit,
+        Fire
     }
 }

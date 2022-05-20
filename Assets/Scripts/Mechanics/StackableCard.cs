@@ -23,7 +23,7 @@ namespace Permanence.Scripts.Mechanics
             base.Awake();
             cardBody = GetComponent<Rigidbody2D>();
             selectableCard = GetComponent<SelectableCard>();
-            placementOffset = new Vector2(0, -0.4f);
+            placementOffset = new Vector2(0, -0.65f);
         }
 
         private void Start() {
