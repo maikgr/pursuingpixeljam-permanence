@@ -27,12 +27,13 @@ namespace Permanence.Scripts.Mechanics
         }
 
         private void Start() {
-            selectableCard.AddEventListener(SelectableCardEvent.ON_SELECTED, OnCardSelected);
+            selectableCard.AddEventListener(SelectableCardEvent.ON_SELECTED, OnCardRemoved);
             selectableCard.AddEventListener(SelectableCardEvent.ON_DROPPED, OnCardDropped);
         }
 
         private void OnDestroy() {
-            selectableCard.RemoveEventListener(SelectableCardEvent.ON_SELECTED, OnCardSelected);
+            OnCardRemoved(selectableCard);
+            selectableCard.RemoveEventListener(SelectableCardEvent.ON_SELECTED, OnCardRemoved);
             selectableCard.RemoveEventListener(SelectableCardEvent.ON_DROPPED, OnCardDropped);
         }
 
@@ -73,7 +74,7 @@ namespace Permanence.Scripts.Mechanics
             }
         }
 
-        private void OnCardSelected(SelectableCard card)
+        private void OnCardRemoved(SelectableCard card)
         {
             if (bottomCardCollider != null)
             {
