@@ -60,6 +60,7 @@ namespace Permanence.Scripts.Mechanics
             mouseOffset = transform.position - mainCamera.WorldMousePosition();
             cardCollider.enabled = false;
             spriteRenderer.sortingOrder = 11;
+            SfxController.instance.PlayAudio(GameSfxType.CardPickup, transform.position);
             DispatchEvent(SelectableCardEvent.ON_SELECTED, this);
         }
 
@@ -73,10 +74,12 @@ namespace Permanence.Scripts.Mechanics
             canvasGameCard.UnsetCard();
             cardCollider.enabled = true;
             spriteRenderer.sortingOrder = 1;
+            SfxController.instance.PlayAudio(GameSfxType.CardPlaced, transform.position);
             DispatchEvent(SelectableCardEvent.ON_DROPPED, this);
         }
 
         public void ResetPosition() {
+            SfxController.instance.PlayAudio(GameSfxType.CardPlaced, transform.position);
             transform.position = originalPos;
             body2D.position = originalPos;
             DropCard();

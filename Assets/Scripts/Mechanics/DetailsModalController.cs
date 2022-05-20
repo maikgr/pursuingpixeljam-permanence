@@ -70,6 +70,7 @@ namespace Permanence.Scripts.Mechanics {
 
         public void ShowModal(GameCard gameCard, BoxCollider2D collider)
         {
+            SfxController.instance.PlayAudio(GameSfxType.DetailsOpen, transform.position);
             AdjustModalDimension(gameCard, collider);
 
             // Calculate position on screen
@@ -117,6 +118,7 @@ namespace Permanence.Scripts.Mechanics {
 
         public void HideModal()
         {
+            SfxController.instance.PlayAudio(GameSfxType.ButtonClick, transform.position);
             submitButton.gameObject.SetActive(false);
             modal.gameObject.SetActive(false);
             modalIsOpen = false;
@@ -124,6 +126,7 @@ namespace Permanence.Scripts.Mechanics {
 
         public void onSubmit()
         {
+            SfxController.instance.PlayAudio(GameSfxType.ButtonClick, transform.position);
             var consumerCard = selectedCard.gameObject.GetComponent<MaterialConsumerCard>();
             if (consumerCard != null)
             {

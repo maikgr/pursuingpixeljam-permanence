@@ -50,6 +50,7 @@ namespace Permanence.Scripts.Mechanics {
             {
                 return false;
             }
+            SfxController.instance.PlayAudio(GameSfxType.MaterialsPlaced, transform.position);
             materialImage.sprite = gameCard.cardSprite;
             materialImage.color = Color.white;
             consumerCard.AddMaterial(gameCard, slotIndex);

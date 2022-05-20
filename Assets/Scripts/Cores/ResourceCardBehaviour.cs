@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Permanence.Scripts.Entities;
 using Permanence.Scripts.Extensions;
+using Permanence.Scripts.Constants;
 
 namespace Permanence.Scripts.Cores
 {
@@ -60,6 +61,7 @@ namespace Permanence.Scripts.Cores
             var loot = loots.GetRandom();
             var spawnPoint = resourceSpawnArea.GetRandomSpawnPoint(transform.position);
             var lootObj = Instantiate(loot, spawnPoint, Quaternion.identity);
+            SfxController.instance.PlayAudio(GameSfxType.CardSpawn, transform.position);
         }
     }
 }

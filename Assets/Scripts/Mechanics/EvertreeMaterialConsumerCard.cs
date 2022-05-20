@@ -1,8 +1,10 @@
 using UnityEngine;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using Permanence.Scripts.Entities;
+using Permanence.Scripts.Cores;
+using Permanence.Scripts.Constants;
 
 namespace Permanence.Scripts.Mechanics
 {
@@ -44,6 +46,7 @@ namespace Permanence.Scripts.Mechanics
             isWorking = true;
             cardProgressBar.IsShow = true;
             timeLeft = workTime;
+            SfxController.instance.PlayAudio(GameSfxType.EvertreeUpgrade1, transform.position);
             DispatchEvent(CardProgressBarEvent.ON_LOOTING_START, cardProgressBar);
             return true;
         }
@@ -55,6 +58,7 @@ namespace Permanence.Scripts.Mechanics
             {
                 var spawnPoint = resourceSpawnArea.GetRandomSpawnPoint(transform.position);
                 Instantiate(loot, spawnPoint, Quaternion.identity);
+                SfxController.instance.PlayAudio(GameSfxType.CardSpawn, transform.position);
             }
         }
     }
