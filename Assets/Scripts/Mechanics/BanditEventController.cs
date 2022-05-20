@@ -6,6 +6,7 @@ using Permanence.Scripts.Cores;
 using Permanence.Scripts.Entities;
 using Permanence.Scripts.Constants;
 using Permanence.Scripts.Extensions;
+using Permanence.Scripts.UI;
 
 namespace Permanence.Scripts.Mechanics
 {
@@ -45,7 +46,7 @@ namespace Permanence.Scripts.Mechanics
                 if (Random.Range(0f, 1f) <= eventChance)
                 {
                     isEventRunning = true;
-                    eventController.StartEvent();
+                    ShowEventNotification();
                     StartCoroutine(SpawnBandits());
                 }
                 else
@@ -79,6 +80,11 @@ namespace Permanence.Scripts.Mechanics
             if (spawnedBanditsCount > 0) return;
             eventLevel += 1;
             nextEventCheckTime = Time.time + 30;
+        }
+
+        private void ShowEventNotification()
+        {
+            EventNotificationController.instance.ShowNotification(title, description);
         }
     }
 }

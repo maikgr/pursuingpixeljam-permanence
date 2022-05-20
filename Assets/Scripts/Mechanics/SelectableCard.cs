@@ -5,6 +5,7 @@ using UnityEngine;
 using Permanence.Scripts.Cores;
 using Permanence.Scripts.Extensions;
 using Permanence.Scripts.Constants;
+using Permanence.Scripts.UI;
 using System;
 
 namespace Permanence.Scripts.Mechanics

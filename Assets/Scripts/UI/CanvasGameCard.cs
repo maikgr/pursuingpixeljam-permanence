@@ -5,8 +5,9 @@ using Permanence.Scripts.Constants;
 using Permanence.Scripts.Cores;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Permanence.Scripts.Mechanics;
 
-namespace Permanence.Scripts.Mechanics {
+namespace Permanence.Scripts.UI {
     public class CanvasGameCard : MonoBehaviour, IDragHandler, IDropHandler
     {
         public SelectableCard selectableCard;

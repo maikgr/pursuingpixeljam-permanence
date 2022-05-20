@@ -6,8 +6,9 @@ using UnityEngine.EventSystems;
 using TMPro;
 using Permanence.Scripts.Cores;
 using Permanence.Scripts.Constants;
+using Permanence.Scripts.Mechanics;
 
-namespace Permanence.Scripts.Mechanics {
+namespace Permanence.Scripts.UI {
     public class DetailsModalSlotController : MonoBehaviour
     {
         [SerializeField]
