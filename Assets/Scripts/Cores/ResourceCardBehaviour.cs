@@ -9,15 +9,15 @@ namespace Permanence.Scripts.Cores
     public abstract class ResourceCardBehaviour : EventBusBehaviour<CardProgressBar>
     {
         [SerializeField]
-        private ResourceSpawnArea resourceSpawnArea;
+        protected ResourceSpawnArea resourceSpawnArea;
         [SerializeField]
-        private float lootTime;
+        protected float lootTime;
         [SerializeField]
-        private List<GameObject> loots;
-        private float timeUntilNextLoot;
-        private bool isLooting;
-        private float speedModifier = 1f;
-        private CardProgressBar cardProgressBar;
+        protected List<GameObject> loots;
+        protected float timeUntilNextLoot;
+        protected bool isLooting;
+        protected float speedModifier = 1f;
+        protected CardProgressBar cardProgressBar;
 
         #pragma warning disable 0114
         protected virtual void Awake() {
@@ -58,24 +58,8 @@ namespace Permanence.Scripts.Cores
         
         protected void SpawnLoot(List<GameObject> loots) {
             var loot = loots.GetRandom();
-            var spawnPoint = GetRandomSpawnPoint(resourceSpawnArea.MinLocalPoint, resourceSpawnArea.MaxLocalPoint);
+            var spawnPoint = resourceSpawnArea.GetRandomSpawnPoint(transform.position);
             var lootObj = Instantiate(loot, spawnPoint, Quaternion.identity);
-        }
-        
-        private Vector2 GetRandomSpawnPoint(Vector2 minPoint, Vector2 maxPoint)
-        {
-            var hasObject = true;
-            Vector2 randomPos = Vector2.zero;
-            while (hasObject)
-            {
-                randomPos = new Vector2(
-                    UnityEngine.Random.Range(minPoint.x, maxPoint.x),
-                    UnityEngine.Random.Range(minPoint.y, maxPoint.y)
-                );
-                var hitInfo = Physics2D.Raycast(randomPos, Vector2.zero);
-                hasObject = hitInfo.collider != null;
-            }
-            return randomPos;
         }
     }
 }

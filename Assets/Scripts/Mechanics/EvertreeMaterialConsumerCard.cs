@@ -31,8 +31,8 @@ namespace Permanence.Scripts.Mechanics
                 DispatchEvent(CardProgressBarEvent.ON_LOOTING_PROGRESS, cardProgressBar);
                 if (timeLeft <= 0)
                 {
+                    isWorking = false;
                     SpawnLoot(rewards);
-                    timeLeft = workTime;
                 }
             }
         }
@@ -43,17 +43,17 @@ namespace Permanence.Scripts.Mechanics
             requiredMaterials.Clear();
             isWorking = true;
             cardProgressBar.IsShow = true;
+            timeLeft = workTime;
             DispatchEvent(CardProgressBarEvent.ON_LOOTING_START, cardProgressBar);
             return true;
         }
 
         protected void SpawnLoot(List<GameObject> loots) {
-            isWorking = false;
             cardProgressBar.IsShow = false;
             DispatchEvent(CardProgressBarEvent.ON_LOOTING_STOP, cardProgressBar);
             foreach(var loot in loots)
             {
-                var spawnPoint = Vector2.zero;
+                var spawnPoint = resourceSpawnArea.GetRandomSpawnPoint(transform.position);
                 Instantiate(loot, spawnPoint, Quaternion.identity);
             }
         }

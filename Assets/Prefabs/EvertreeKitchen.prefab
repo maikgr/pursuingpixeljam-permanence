@@ -313,8 +313,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceSpawnArea:
-    MinLocalPoint: {x: -2, y: -2}
-    MaxLocalPoint: {x: 2, y: 2}
+    MinLocalPoint: {x: -4, y: -4}
+    MaxLocalPoint: {x: 4, y: 4}
   lootTime: 10
   loots:
   - {fileID: 2281952316265536858, guid: 1aecb9cdfa167584cb6d1572359294a7, type: 3}

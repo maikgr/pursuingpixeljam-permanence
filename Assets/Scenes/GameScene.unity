@@ -1265,7 +1265,7 @@ Transform:
   - {fileID: 474318073}
   - {fileID: 1837459193}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &605769743
 MonoBehaviour:
@@ -1280,8 +1280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceSpawnArea:
-    MinLocalPoint: {x: -2, y: -2}
-    MaxLocalPoint: {x: 2, y: 2}
+    MinLocalPoint: {x: -4, y: -4}
+    MaxLocalPoint: {x: 4, y: 4}
   lootTime: 5
   loots:
   - {fileID: 769781483183784864, guid: 5e12bdd18cf8cd54c986f739ed4d41ae, type: 3}
@@ -2024,7 +2024,7 @@ Transform:
   m_Children:
   - {fileID: 512791243}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1061268893
 BoxCollider2D:
@@ -2253,7 +2253,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1692266227}
         m_TargetAssemblyTypeName: Permanence.Scripts.Mechanics.DetailsModalController,
           Assembly-CSharp
-        m_MethodName: HideModal
+        m_MethodName: onSubmit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2876,7 +2876,7 @@ Transform:
   - {fileID: 1594972569}
   - {fileID: 138406457}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1457690286
 Rigidbody2D:
@@ -2953,8 +2953,8 @@ MonoBehaviour:
     material: {fileID: 0}
     isFulfilled: 0
   resourceSpawnArea:
-    MinLocalPoint: {x: 0, y: 0}
-    MaxLocalPoint: {x: 0, y: 0}
+    MinLocalPoint: {x: -4, y: -4}
+    MaxLocalPoint: {x: 4, y: 4}
   workTime: 10
   rewards:
   - {fileID: 562934066871751874, guid: 8a896c8ba050e5a44aa29194bf363915, type: 3}
@@ -3189,7 +3189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594972568}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.13, y: -0.09000015, z: 0}
+  m_LocalPosition: {x: 0, y: 1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3233,8 +3233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceSpawnArea:
-    MinLocalPoint: {x: -2, y: -2}
-    MaxLocalPoint: {x: 2, y: 2}
+    MinLocalPoint: {x: -4, y: -4}
+    MaxLocalPoint: {x: 4, y: 4}
   lootTime: 10
   loots:
   - {fileID: 6590241114819724355, guid: 8336c13ebfb18e640a3c446de324f7a4, type: 3}
@@ -3508,7 +3508,7 @@ RectTransform:
   - {fileID: 1345878522}
   - {fileID: 1815462257}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3898,7 +3898,7 @@ GameObject:
   - component: {fileID: 1845061586}
   - component: {fileID: 1845061585}
   - component: {fileID: 1845061584}
-  - component: {fileID: 1845061583}
+  - component: {fileID: 1845061590}
   m_Layer: 0
   m_Name: EvertreeBud
   m_TagString: GameCard
@@ -3906,24 +3906,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1845061583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845061582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a7af1f3f21a7a742a918eba54887944, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourceSpawnArea:
-    MinLocalPoint: {x: -2, y: -2}
-    MaxLocalPoint: {x: 2, y: 2}
-  lootTime: 10
-  loots:
-  - {fileID: 2281952316265536858, guid: 1aecb9cdfa167584cb6d1572359294a7, type: 3}
 --- !u!114 &1845061584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4033,6 +4015,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1845061590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845061582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade34edd5a5aeb242829a03f7502750d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceSpawnArea:
+    MinLocalPoint: {x: -4, y: -4}
+    MaxLocalPoint: {x: 4, y: 4}
+  lootTime: 30
+  loots:
+  - {fileID: 2281952316265536858, guid: 1aecb9cdfa167584cb6d1572359294a7, type: 3}
 --- !u!1 &1854042252
 GameObject:
   m_ObjectHideFlags: 0

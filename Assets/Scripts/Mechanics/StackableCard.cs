@@ -15,7 +15,7 @@ namespace Permanence.Scripts.Mechanics
         private Rigidbody2D cardBody;
         private Vector2 placementOffset;
         private SelectableCard selectableCard;
-        private Collider2D stackedCollider;
+        private Collider2D bottomCardCollider;
         private GameCard stackedCard;
 
         protected override void Awake()
@@ -49,7 +49,7 @@ namespace Permanence.Scripts.Mechanics
                     if (canStackOnTypes.Any(allow => allow.Equals(targetCard.cardType))) {
                         DispatchEvent(StackableCardEvent.ON_STACKED, stackedCard);
                         targetCollider.enabled = false;
-                        stackedCollider = targetCollider;
+                        bottomCardCollider = targetCollider;
                         cardBody.position = new Vector2(
                             targetCard.transform.position.x + placementOffset.x,
                             targetCard.transform.position.y + placementOffset.y
@@ -59,6 +59,7 @@ namespace Permanence.Scripts.Mechanics
                             targetCard.transform.position.y + placementOffset.y,
                             targetCard.transform.position.z - 1
                         );
+                        cardBody.bodyType = RigidbodyType2D.Static;
                     }
                     // Push this card away if not allowed
                     else
@@ -74,11 +75,12 @@ namespace Permanence.Scripts.Mechanics
 
         private void OnCardSelected(SelectableCard card)
         {
-            if (stackedCollider != null)
+            if (bottomCardCollider != null)
             {
                 DispatchEvent(StackableCardEvent.ON_REMOVED, stackedCard);
-                stackedCollider.enabled = true;
-                stackedCollider = null;
+                bottomCardCollider.enabled = true;
+                bottomCardCollider = null;
+                cardBody.bodyType = RigidbodyType2D.Dynamic;
             }
         }
     }
