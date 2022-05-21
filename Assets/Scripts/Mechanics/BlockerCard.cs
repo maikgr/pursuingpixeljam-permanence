@@ -47,6 +47,13 @@ namespace Permanence.Scripts.Mechanics
                 resourceCard.StopUseResource();
             }
 
+            // Check if target card is a structure card
+            var structureCard = targetCard.GetComponent<StructureCard>();
+            if (structureCard != null)
+            {
+                structureCard.StartReduceHealth();
+            }
+
             rayCard.collider.enabled = false;
         }
 
@@ -83,6 +90,11 @@ namespace Permanence.Scripts.Mechanics
 
         private void ClearBlocker()
         {
+            var structureCard = targetCard.GetComponent<StructureCard>();
+            if (structureCard != null)
+            {
+                structureCard.StopReduceHealth();
+            }
             targetCard.GetComponent<Collider2D>().enabled = true;
             StopReduceHealth();
             onCardDeath.Invoke();

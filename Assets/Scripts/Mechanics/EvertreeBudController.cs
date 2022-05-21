@@ -9,7 +9,7 @@ namespace Permanence.Scripts.Mechanics
     public class EvertreeBudController : ResourceCardBehaviour
     {
         private void Start() {
-            StartCoroutine(DelayWorkStart(5f));
+            StartCoroutine(DelayWorkStart(1f));
         }
 
         protected override void Update() {
@@ -27,12 +27,12 @@ namespace Permanence.Scripts.Mechanics
 
         public override void StartUseResource(float speedModifier = 1f)
         {
-            this.speedModifier = speedModifier * 5;
+            this.speedModifier = speedModifier * 10;
         }
 
         public override void StopUseResource()
         {
-            this.speedModifier = speedModifier / 5;
+            this.speedModifier = speedModifier / 10;
         }
 
         private IEnumerator DelayWorkStart(float seconds)

@@ -41,9 +41,9 @@ namespace Permanence.Scripts.Mechanics
             instance = this;
 
             eventController = GetComponent<GameEventController>();
-            nextEventCheckTime = 20;
+            nextEventCheckTime = 5;
             checkInterval = 5;
-            eventChance = 0.2f;
+            eventChance = 1f;
             eventLevel = 1;
         }
 

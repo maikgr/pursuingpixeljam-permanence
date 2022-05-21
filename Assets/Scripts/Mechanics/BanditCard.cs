@@ -61,7 +61,7 @@ namespace Permanence.Scripts.Mechanics
 
         private void SpawnFire()
         {
-            var flammables = GameObject.FindObjectsOfType<ResourceCardBehaviour>()
+            var flammables = GameObject.FindObjectsOfType<StructureCard>()
                 .Where(card => card.GetComponent<Collider2D>().enabled)
                 .ToList();
             var fires = GameObject.FindObjectsOfType<GameCard>()
