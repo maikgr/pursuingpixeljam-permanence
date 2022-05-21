@@ -13,10 +13,13 @@ namespace Permanence.Scripts.Mechanics
     {
         [SerializeField]
         private float health;
+        [SerializeField]
+        private GameObject brokenOverlay;
         private float currentHealth;
         private float speedMultiplier;
         private bool isReducing;
         private CardProgressBar cardProgressBar;
+        public float CurrentHealth => currentHealth;
 
         protected override void Awake() {
             base.Awake();
@@ -58,12 +61,13 @@ namespace Permanence.Scripts.Mechanics
 
         public void RestoreHealth(float speedMultiplier = 1f)
         {
+            brokenOverlay.SetActive(false);
             this.currentHealth = health;
         }
 
         private void BreakStructure()
         {
-            Debug.Log("Structure broken", gameObject);
+            brokenOverlay.SetActive(true);
         }
     }
 }
