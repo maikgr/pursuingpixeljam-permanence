@@ -20,6 +20,7 @@ namespace Permanence.Scripts.Mechanics
         private bool isReducing;
         private CardProgressBar cardProgressBar;
         public float CurrentHealth => currentHealth;
+        public float MaxHealth => health;
 
         protected override void Awake() {
             base.Awake();

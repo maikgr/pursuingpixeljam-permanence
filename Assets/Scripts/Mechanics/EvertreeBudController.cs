@@ -6,19 +6,22 @@ using System.Collections;
 
 namespace Permanence.Scripts.Mechanics
 {
+    [RequireComponent(typeof(StructureCard))]
     public class EvertreeBudController : ResourceCardBehaviour
     {
-        private void Start() {
-            StartCoroutine(DelayWorkStart(1f));
+        private StructureCard structureCard;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            structureCard = GetComponent<StructureCard>();
         }
 
         protected override void Update() {
-            if (isLooting) {
-                timeUntilNextLoot -= Time.deltaTime * speedModifier;
-                cardProgressBar.Value = timeUntilNextLoot/lootTime;
-                DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
+            if (structureCard.CurrentHealth < structureCard.MaxHealth) {
+                timeUntilNextLoot -= Time.deltaTime;
                 if (timeUntilNextLoot <= 0)
-                {
+                {   
                     SpawnLoot(loots);
                     timeUntilNextLoot = lootTime;
                 }
@@ -27,20 +30,12 @@ namespace Permanence.Scripts.Mechanics
 
         public override void StartUseResource(float speedModifier = 1f)
         {
-            this.speedModifier = speedModifier * 10;
+            // Do nothing
         }
 
         public override void StopUseResource()
         {
-            this.speedModifier = speedModifier / 10;
-        }
-
-        private IEnumerator DelayWorkStart(float seconds)
-        {
-            yield return new WaitForSeconds(seconds);
-            isLooting = true;
-            cardProgressBar.IsShow = true;
-            DispatchEvent(CardProgressBarEvent.ON_PROGRESS_START, cardProgressBar);
+            // Cannot be stopped
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Permanence.Scripts.Mechanics
             if (other == null || !CardType.Fire.Equals(other.cardType)) return;
             workplaceCard = other;
             var blocker = other.gameObject.GetComponent<BlockerCard>();
-            blocker.StartReduceHealth(() => StopWorking(other), 10f);
+            blocker.StartReduceHealth(() => EmptyWater(), 10f);
             DispatchEvent(WorkerCardEvent.ON_START_WORKING);
         }
 
@@ -42,6 +42,11 @@ namespace Permanence.Scripts.Mechanics
             var blocker = other.gameObject.GetComponent<BlockerCard>();
             blocker.StopReduceHealth();
             DispatchEvent(WorkerCardEvent.ON_STOP_WORKING);
+        }
+
+        private void EmptyWater()
+        {
+            Destroy(gameObject, 0.5f);
         }
     }
 }

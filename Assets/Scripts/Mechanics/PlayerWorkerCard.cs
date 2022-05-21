@@ -13,7 +13,7 @@ namespace Permanence.Scripts.Mechanics
         [SerializeField]
         private List<CardType> CanWorkOnTypes;
         private StackableCard card;
-        private CardType[] resources = new CardType[2] { CardType.River, CardType.Mineshaft };
+        private CardType[] resources = new CardType[4] { CardType.River, CardType.Mineshaft, CardType.House, CardType.Forest };
         private CardType[] hazards = new CardType[2] { CardType.Bandit, CardType.Fire };
         private GameCard workplaceCard;
 
@@ -38,6 +38,11 @@ namespace Permanence.Scripts.Mechanics
             workplaceCard = other;
             if (resources.Any(res => res.Equals(other.cardType))) {
                 var resource = other.gameObject.GetComponent<ResourceCardBehaviour>();
+                var structure = other.gameObject.GetComponent<StructureCard>();
+                if (structure != null && structure.CurrentHealth < structure.MaxHealth)
+                {
+                    structure.RestoreHealth();
+                }
                 resource.StartUseResource();
                 DispatchEvent(WorkerCardEvent.ON_START_WORKING);
             }

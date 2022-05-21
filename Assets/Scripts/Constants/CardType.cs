@@ -17,6 +17,7 @@ namespace Permanence.Scripts.Constants
         Everfruit,
         Everbud,
         Bandit,
-        Fire
+        Fire,
+        Forest
     }
 }

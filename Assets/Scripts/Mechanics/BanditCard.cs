@@ -25,6 +25,7 @@ namespace Permanence.Scripts.Mechanics
         private Vector2 fireCardOffset;
         private float nextFireSpawn;
         private Action onCardDeath;
+        private int fireSpawnAmount;
 
         protected override void Awake()
         {

@@ -25,8 +25,12 @@ namespace Permanence.Scripts.Mechanics
         private GameCard fireCard;
         [SerializeField]
         private ResourceSpawnArea banditSpawnArea;
-        private float nextEventCheckTime;
+        [SerializeField]
+        private float firstEventTime;
+        [SerializeField]
         private float checkInterval;
+        private float nextEventCheckTime;
+        [SerializeField]
         private float eventChance;
         private bool isEventRunning;
         private int eventLevel;
@@ -41,9 +45,7 @@ namespace Permanence.Scripts.Mechanics
             instance = this;
 
             eventController = GetComponent<GameEventController>();
-            nextEventCheckTime = 5;
-            checkInterval = 5;
-            eventChance = 1f;
+            nextEventCheckTime = firstEventTime;
             eventLevel = 1;
         }
 
@@ -88,6 +90,7 @@ namespace Permanence.Scripts.Mechanics
             if (spawnedBanditsCount > 0) return;
             eventLevel += 1;
             nextEventCheckTime = Time.time + 90;
+            isEventRunning = false;
         }
 
         private void ShowEventNotification()
