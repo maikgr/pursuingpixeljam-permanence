@@ -65,7 +65,7 @@ namespace Permanence.Scripts.Mechanics
                 .Where(card => card.GetComponent<Collider2D>().enabled)
                 .ToList();
             var fires = GameObject.FindObjectsOfType<GameCard>()
-                .Where(card => card.cardType.Equals(CardType.Fire))
+                .Where(card => card.cardType.Equals(CardType.Fire) && card.GetComponent<Collider2D>().enabled)
                 .ToList();
 
             if (flammables.Count.Equals(0) && fires.Count.Equals(0)) return;
