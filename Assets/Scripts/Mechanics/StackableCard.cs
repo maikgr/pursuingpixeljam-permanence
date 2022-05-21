@@ -28,16 +28,16 @@ namespace Permanence.Scripts.Mechanics
 
         private void Start() {
             selectableCard.AddEventListener(SelectableCardEvent.ON_SELECTED, OnCardRemoved);
-            selectableCard.AddEventListener(SelectableCardEvent.ON_DROPPED, OnCardDropped);
+            selectableCard.AddEventListener(SelectableCardEvent.ON_DROPPED, OnCardPlaced);
         }
 
         private void OnDestroy() {
             OnCardRemoved(selectableCard);
             selectableCard.RemoveEventListener(SelectableCardEvent.ON_SELECTED, OnCardRemoved);
-            selectableCard.RemoveEventListener(SelectableCardEvent.ON_DROPPED, OnCardDropped);
+            selectableCard.RemoveEventListener(SelectableCardEvent.ON_DROPPED, OnCardPlaced);
         }
 
-        private void OnCardDropped(SelectableCard card)
+        private void OnCardPlaced(SelectableCard card)
         {
             var results = new RaycastHit2D[10];
             var contacts = card.attachedCollider.Cast(Vector2.zero, results, Mathf.Infinity);
@@ -81,6 +81,9 @@ namespace Permanence.Scripts.Mechanics
                 DispatchEvent(StackableCardEvent.ON_REMOVED, stackedCard);
                 bottomCardCollider.enabled = true;
                 bottomCardCollider = null;
+            }
+            if (!cardBody.bodyType.Equals(RigidbodyType2D.Dynamic))
+            {
                 cardBody.bodyType = RigidbodyType2D.Dynamic;
             }
         }
