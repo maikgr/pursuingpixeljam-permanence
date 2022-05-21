@@ -33,7 +33,7 @@ namespace Permanence.Scripts.Cores
             {
                 timeUntilNextLoot -= Time.deltaTime * speedModifier;
                 cardProgressBar.Value = timeUntilNextLoot/lootTime;
-                DispatchEvent(CardProgressBarEvent.ON_LOOTING_PROGRESS, cardProgressBar);
+                DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
                 if (timeUntilNextLoot <= 0)
                 {
                     SpawnLoot(loots);
@@ -47,14 +47,14 @@ namespace Permanence.Scripts.Cores
             this.speedModifier = speedModifier;
             isLooting = true;
             cardProgressBar.IsShow = true;
-            DispatchEvent(CardProgressBarEvent.ON_LOOTING_START, cardProgressBar);
+            DispatchEvent(CardProgressBarEvent.ON_PROGRESS_START, cardProgressBar);
         }
 
         public virtual void StopUseResource()
         {
             isLooting = false;
             cardProgressBar.IsShow = false;
-            DispatchEvent(CardProgressBarEvent.ON_LOOTING_STOP, cardProgressBar);
+            DispatchEvent(CardProgressBarEvent.ON_PROGRESS_STOP, cardProgressBar);
         }
         
         protected void SpawnLoot(List<GameObject> loots) {

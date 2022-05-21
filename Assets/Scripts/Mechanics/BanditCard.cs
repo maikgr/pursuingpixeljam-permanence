@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using UnityEngine;
 using Permanence.Scripts.Cores;
 using Permanence.Scripts.Entities;
@@ -23,11 +24,16 @@ namespace Permanence.Scripts.Mechanics
         private bool isBeingDamaged;
         private Vector2 fireCardOffset;
         private float nextFireSpawn;
+        private Action onCardDeath;
 
         protected override void Awake()
         {
             base.Awake();
-            cardProgressBar = new CardProgressBar();
+            cardProgressBar = new CardProgressBar()
+            {
+                MinValue = 0,
+                MaxValue = health
+            };
             currentHealth = health;
             fireCardOffset = new Vector2(0, -0.65f);
             nextFireSpawn = Time.time;
@@ -39,13 +45,14 @@ namespace Permanence.Scripts.Mechanics
             {
                 currentHealth -= Time.deltaTime * damageMultiplier;
                 cardProgressBar.Value = currentHealth / health;
-                DispatchEvent(CardProgressBarEvent.ON_LOOTING_PROGRESS, cardProgressBar);
+                DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
                 if (currentHealth <= 0)
                 {
-                    ClearBlocker();
+                    isBeingDamaged = false;
+                    RemoveBandit();
                 }
             }
-            if (Time.time > nextFireSpawn)
+            if (currentHealth > 0 && Time.time > nextFireSpawn)
             {
                 SpawnFire();
                 nextFireSpawn = Time.time + fireSpawnInterval;
@@ -77,11 +84,12 @@ namespace Permanence.Scripts.Mechanics
             SfxController.instance.PlayAudio(GameSfxType.Fire, targetPos);
         }
 
-        public void StartReduceHealth(float damageMultiplier = 1f)
+        public void StartReduceHealth(Action onCardDeath, float damageMultiplier = 1f)
         {
+            this.onCardDeath = onCardDeath;
             isBeingDamaged = true;
             cardProgressBar.IsShow = true;
-            DispatchEvent(CardProgressBarEvent.ON_LOOTING_START, cardProgressBar);
+            DispatchEvent(CardProgressBarEvent.ON_PROGRESS_START, cardProgressBar);
             this.damageMultiplier = damageMultiplier;
         }
 
@@ -89,14 +97,16 @@ namespace Permanence.Scripts.Mechanics
         {
             isBeingDamaged = false;
             cardProgressBar.IsShow = false;
-            DispatchEvent(CardProgressBarEvent.ON_LOOTING_STOP, cardProgressBar);
+            DispatchEvent(CardProgressBarEvent.ON_PROGRESS_STOP, cardProgressBar);
             this.damageMultiplier = 1f;
         }
 
-        private void ClearBlocker()
+        private void RemoveBandit()
         {
+            BanditEventController.instance.BanditRemoved();
             StopReduceHealth();
-            Destroy(gameObject);
+            onCardDeath.Invoke();
+            Destroy(gameObject, 0.5f); // Delay to let other card proceed their work
         }
     }
 }

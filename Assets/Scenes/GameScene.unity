@@ -200,7 +200,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -569,7 +569,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 169581002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a469b6f8c08b2b44283a8f7cfdd3511a, type: 3}
+  m_Script: {fileID: 11500000, guid: 496b5128597526b459a644433531ced9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   materialImage: {fileID: 169581004}
@@ -1228,7 +1228,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &389742985
 Canvas:
   m_ObjectHideFlags: 0
@@ -2222,7 +2222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &661088399
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3065,6 +3065,7 @@ GameObject:
   - component: {fileID: 1061268897}
   - component: {fileID: 1061268896}
   - component: {fileID: 1061268899}
+  - component: {fileID: 1061268900}
   m_Layer: 0
   m_Name: Player
   m_TagString: GameCard
@@ -3162,7 +3163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canStackOnTypes: 02000000030000000400000005000000060000000b000000
+  canStackOnTypes: 02000000030000000400000005000000060000000b0000000c0000000d000000
 --- !u!114 &1061268897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3175,7 +3176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae35da6a9cd886428b213fbd372f41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanWorkOnTypes: 02000000030000000b0000000500000006000000
+  CanWorkOnTypes: 02000000030000000b00000005000000060000000c0000000d000000
 --- !u!114 &1061268898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3209,11 +3210,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d539a9985f5054385b2f2dad13d812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingColor: {r: 0, g: 0.55511737, b: 1, a: 0}
-  endColor: {r: 1, g: 0.24056602, b: 0.24056602, a: 0}
   lifetimeText: {fileID: 1516016001}
-  totalLifetime: 50
+  totalLifetime: 100
   OldPlayer: {fileID: 7913285197359822327, guid: 5690b139712269c4daa56ea223b2fa72, type: 3}
+--- !u!114 &1061268900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061268891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827378b737b64d84c84db2c7ed5ad88b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBar: {fileID: 522017852}
+  emptyBarPosition: -1.8
+  fullBarPosition: 0
+  startingColor: {r: 0.1358285, g: 0, b: 1, a: 0}
+  endColor: {r: 1, g: 0.21963641, b: 0, a: 0}
 --- !u!1 &1104323106
 GameObject:
   m_ObjectHideFlags: 0
@@ -5304,7 +5320,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1692266222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d44ad3c798c2ee44858261de2001908, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ffbbc1da7328c43981d5ce089f4ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1692266225}
@@ -5761,7 +5777,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1815462256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d5290cb2c699164aa4611035ef0f5cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 88089c52e86d31043becae77a28e4b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   selectableCard: {fileID: 0}
@@ -6034,7 +6050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1878529862}
   m_Layer: 0
-  m_Name: LootingTimeBar
+  m_Name: LifetimeBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6355,7 +6371,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1972716310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a469b6f8c08b2b44283a8f7cfdd3511a, type: 3}
+  m_Script: {fileID: 11500000, guid: 496b5128597526b459a644433531ced9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   materialImage: {fileID: 1972716312}
@@ -6767,7 +6783,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2054968113864597108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a469b6f8c08b2b44283a8f7cfdd3511a, type: 3}
+  m_Script: {fileID: 11500000, guid: 496b5128597526b459a644433531ced9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   materialImage: {fileID: 2054968113864597110}

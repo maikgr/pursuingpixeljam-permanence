@@ -4,16 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Globalization;
+using Permanence.Scripts.Cores;
+using Permanence.Scripts.Entities;
 
 namespace Permanence.Scripts.Mechanics
 {
-    [RequireComponent(typeof(WorkerCard))]
-    public class PlayerLifetimeController : MonoBehaviour
+    [RequireComponent(typeof(PlayerWorkerCard))]
+    public class PlayerLifetimeController : EventBusBehaviour<CardProgressBar>
     {
-        [SerializeField]
-        private Color startingColor;
-        [SerializeField]
-        private Color endColor;
         [SerializeField]
         private TMP_Text lifetimeText;
         [SerializeField]
@@ -23,14 +21,19 @@ namespace Permanence.Scripts.Mechanics
         private float currentLifetime;
         private bool isLifetimeReducing;
         private AnimationCurve[] colorCurves;
-        private WorkerCard worker;
+        private PlayerWorkerCard worker;
+        private CardProgressBar cardProgressBar;
 
-        private void Awake()
+        protected override void Awake()
         {
-            worker = GetComponent<WorkerCard>();
-            colorCurves = GenerateColorCurves(startingColor, endColor);
+            base.Awake();
+            worker = GetComponent<PlayerWorkerCard>();
             currentLifetime = totalLifetime;
-            AdjustLifetimeText();
+            cardProgressBar = new CardProgressBar()
+            {
+                MinValue = 0,
+                MaxValue = totalLifetime
+            };
         }
 
         private void Start()
@@ -45,13 +48,18 @@ namespace Permanence.Scripts.Mechanics
         }
 
         private void Update() {
-            if (isLifetimeReducing && currentLifetime > 0)
+            if (currentLifetime > 0)
             {
                 AdjustLifetimeText();
-                currentLifetime -= Time.deltaTime;
-                if (currentLifetime <= 0)
+                cardProgressBar.Value = totalLifetime - currentLifetime;
+                DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
+                if (isLifetimeReducing)
                 {
-                    StartOldAgeEvent();
+                    currentLifetime -= Time.deltaTime;
+                    if (currentLifetime <= 0)
+                    {
+                        StartOldAgeEvent();
+                    }
                 }
             }
         }
@@ -59,36 +67,22 @@ namespace Permanence.Scripts.Mechanics
         private void AdjustLifetimeText()
         {
             lifetimeText.text = currentLifetime.ToString("F", CultureInfo.InvariantCulture);
-            lifetimeText.color = new Color(
-                colorCurves[0].Evaluate(totalLifetime - currentLifetime),
-                colorCurves[1].Evaluate(totalLifetime - currentLifetime),
-                colorCurves[2].Evaluate(totalLifetime - currentLifetime)
-            );
         }
 
         private void StartReduceLifetime()
         {
             isLifetimeReducing = true;
+            cardProgressBar.IsShow = true;
+            DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
         }
 
         private void StopReduceLifetime()
         {
             isLifetimeReducing = false;
+            cardProgressBar.IsShow = false;
+            DispatchEvent(CardProgressBarEvent.ON_PROGRESS_STOP, cardProgressBar);
         }
 
-        private AnimationCurve[] GenerateColorCurves(Color startColor, Color endColor)
-        {
-            var redCurve = AnimationCurve.Linear(0f, startColor.r, totalLifetime, endColor.r);
-            var greenCurve = AnimationCurve.Linear(0f, startColor.g, totalLifetime, endColor.g);
-            var blueCurve = AnimationCurve.Linear(0f, startColor.b, totalLifetime, endColor.b);
-
-            return new AnimationCurve[3]
-            {
-                redCurve,
-                greenCurve,
-                blueCurve
-            };
-        }
 
         private void StartOldAgeEvent()
         {

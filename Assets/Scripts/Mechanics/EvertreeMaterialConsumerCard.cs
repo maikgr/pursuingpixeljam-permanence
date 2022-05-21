@@ -30,7 +30,7 @@ namespace Permanence.Scripts.Mechanics
             {
                 timeLeft -= Time.deltaTime;
                 cardProgressBar.Value = timeLeft/workTime;
-                DispatchEvent(CardProgressBarEvent.ON_LOOTING_PROGRESS, cardProgressBar);
+                DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
                 if (timeLeft <= 0)
                 {
                     isWorking = false;
@@ -47,13 +47,13 @@ namespace Permanence.Scripts.Mechanics
             cardProgressBar.IsShow = true;
             timeLeft = workTime;
             SfxController.instance.PlayAudio(GameSfxType.EvertreeUpgrade1, transform.position);
-            DispatchEvent(CardProgressBarEvent.ON_LOOTING_START, cardProgressBar);
+            DispatchEvent(CardProgressBarEvent.ON_PROGRESS_START, cardProgressBar);
             return true;
         }
 
         protected void SpawnLoot(List<GameObject> loots) {
             cardProgressBar.IsShow = false;
-            DispatchEvent(CardProgressBarEvent.ON_LOOTING_STOP, cardProgressBar);
+            DispatchEvent(CardProgressBarEvent.ON_PROGRESS_STOP, cardProgressBar);
             foreach(var loot in loots)
             {
                 var spawnPoint = resourceSpawnArea.GetRandomSpawnPoint(transform.position);

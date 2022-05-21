@@ -208,7 +208,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -4642843833476724254, guid: a1327b4095717a84db78a3493394fded, type: 3}
+  m_Sprite: {fileID: -3668562649319072968, guid: a1327b4095717a84db78a3493394fded, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -319,7 +319,7 @@ MonoBehaviour:
   cardName: Fire
   cardDescription: Hot, hot, hot! Quick! Put it out, before it spreads!
   cardInstruction: 
-  cardSprite: {fileID: 21300000, guid: c82d0ac252b4fb14eab0bc1da37dbfef, type: 3}
+  cardSprite: {fileID: -3668562649319072968, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!114 &5817075233569163855
 MonoBehaviour:
   m_ObjectHideFlags: 0

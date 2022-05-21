@@ -14,6 +14,7 @@ namespace Permanence.Scripts.Mechanics
     public class BanditEventController : MonoBehaviour
     {
         private GameEventController eventController;
+        public static BanditEventController instance;
         [SerializeField]
         private string title;
         [SerializeField]
@@ -32,8 +33,15 @@ namespace Permanence.Scripts.Mechanics
         private int spawnedBanditsCount;
         
         private void Awake() {
+            var instances = FindObjectsOfType<BanditEventController>();
+            if (instances.Length > 1)
+            {
+                Destroy(gameObject);
+            }
+            instance = this;
+
             eventController = GetComponent<GameEventController>();
-            nextEventCheckTime = 40;
+            nextEventCheckTime = 20;
             checkInterval = 5;
             eventChance = 0.2f;
             eventLevel = 1;
@@ -79,7 +87,7 @@ namespace Permanence.Scripts.Mechanics
         {
             if (spawnedBanditsCount > 0) return;
             eventLevel += 1;
-            nextEventCheckTime = Time.time + 30;
+            nextEventCheckTime = Time.time + 90;
         }
 
         private void ShowEventNotification()

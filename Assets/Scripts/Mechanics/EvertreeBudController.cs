@@ -16,7 +16,7 @@ namespace Permanence.Scripts.Mechanics
             if (isLooting) {
                 timeUntilNextLoot -= Time.deltaTime * speedModifier;
                 cardProgressBar.Value = timeUntilNextLoot/lootTime;
-                DispatchEvent(CardProgressBarEvent.ON_LOOTING_PROGRESS, cardProgressBar);
+                DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
                 if (timeUntilNextLoot <= 0)
                 {
                     SpawnLoot(loots);
@@ -40,7 +40,7 @@ namespace Permanence.Scripts.Mechanics
             yield return new WaitForSeconds(seconds);
             isLooting = true;
             cardProgressBar.IsShow = true;
-            DispatchEvent(CardProgressBarEvent.ON_LOOTING_START, cardProgressBar);
+            DispatchEvent(CardProgressBarEvent.ON_PROGRESS_START, cardProgressBar);
         }
     }
 }

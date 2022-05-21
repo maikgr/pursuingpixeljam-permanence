@@ -19,15 +19,15 @@ namespace Permanence.Scripts.Mechanics
         }
 
         private void Start() {
-            resourceCard.AddEventListener(CardProgressBarEvent.ON_LOOTING_PROGRESS, SetPercentage);
-            resourceCard.AddEventListener(CardProgressBarEvent.ON_LOOTING_START, ShowLootingBar);
-            resourceCard.AddEventListener(CardProgressBarEvent.ON_LOOTING_STOP, HideLootingBar);
+            resourceCard.AddEventListener(CardProgressBarEvent.ON_PROGRESSING, SetPercentage);
+            resourceCard.AddEventListener(CardProgressBarEvent.ON_PROGRESS_START, ShowLootingBar);
+            resourceCard.AddEventListener(CardProgressBarEvent.ON_PROGRESS_STOP, HideLootingBar);
         }
 
         private void OnDestroy() {
-            resourceCard.RemoveEventListener(CardProgressBarEvent.ON_LOOTING_PROGRESS, SetPercentage);
-            resourceCard.RemoveEventListener(CardProgressBarEvent.ON_LOOTING_START, ShowLootingBar);
-            resourceCard.RemoveEventListener(CardProgressBarEvent.ON_LOOTING_STOP, HideLootingBar);
+            resourceCard.RemoveEventListener(CardProgressBarEvent.ON_PROGRESSING, SetPercentage);
+            resourceCard.RemoveEventListener(CardProgressBarEvent.ON_PROGRESS_START, ShowLootingBar);
+            resourceCard.RemoveEventListener(CardProgressBarEvent.ON_PROGRESS_STOP, HideLootingBar);
         }
 
         private void ShowLootingBar(CardProgressBar cardProgressBar) {
