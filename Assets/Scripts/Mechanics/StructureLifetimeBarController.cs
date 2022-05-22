@@ -47,7 +47,8 @@ namespace Permanence.Scripts.Mechanics
             progressBar.color = new Color(
                 progressCurves[0].Evaluate(cardProgressBar.Value),
                 progressCurves[1].Evaluate(cardProgressBar.Value),
-                progressCurves[2].Evaluate(cardProgressBar.Value)
+                progressCurves[2].Evaluate(cardProgressBar.Value),
+                0.6f
             );
         }
 

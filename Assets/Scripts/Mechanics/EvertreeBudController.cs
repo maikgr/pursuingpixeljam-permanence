@@ -15,11 +15,14 @@ namespace Permanence.Scripts.Mechanics
         {
             base.Awake();
             structureCard = GetComponent<StructureCard>();
+            DelayLootStart(1f);
         }
 
         protected override void Update() {
             if (structureCard.CurrentHealth < structureCard.MaxHealth) {
                 timeUntilNextLoot -= Time.deltaTime;
+                cardProgressBar.Value = lootTime - timeUntilNextLoot;
+                DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
                 if (timeUntilNextLoot <= 0)
                 {   
                     SpawnLoot(loots);
@@ -36,6 +39,13 @@ namespace Permanence.Scripts.Mechanics
         public override void StopUseResource()
         {
             // Cannot be stopped
+        }
+
+        private IEnumerator DelayLootStart(float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            cardProgressBar.IsShow = true;
+            DispatchEvent(CardProgressBarEvent.ON_PROGRESS_START, cardProgressBar);
         }
     }
 }

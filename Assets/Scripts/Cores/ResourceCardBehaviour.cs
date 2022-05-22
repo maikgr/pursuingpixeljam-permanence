@@ -24,7 +24,11 @@ namespace Permanence.Scripts.Cores
         protected virtual void Awake() {
             base.Awake();
             timeUntilNextLoot = lootTime;
-            cardProgressBar = new CardProgressBar();
+            cardProgressBar = new CardProgressBar()
+            {
+                MinValue = 0,
+                MaxValue = lootTime
+            };
         }
         #pragma warning restore 0114
 
@@ -32,7 +36,7 @@ namespace Permanence.Scripts.Cores
             if (isLooting)
             {
                 timeUntilNextLoot -= Time.deltaTime * speedModifier;
-                cardProgressBar.Value = timeUntilNextLoot/lootTime;
+                cardProgressBar.Value = lootTime - timeUntilNextLoot;
                 DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
                 if (timeUntilNextLoot <= 0)
                 {

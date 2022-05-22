@@ -10,12 +10,17 @@ namespace Permanence.Scripts.Mechanics
     public class LootingBarController : MonoBehaviour
     {
         [SerializeField]
-        private Transform lootingBar;
+        private SpriteRenderer progressBar;
         private EventBusBehaviour<CardProgressBar> resourceCard;
+        private AnimationCurve positionCurve;
+        [SerializeField]
+        private float emptyBarPosition;
+        [SerializeField]
+        private float fullBarPosition;
 
         private void Awake() {
             resourceCard = GetComponent<EventBusBehaviour<CardProgressBar>>();
-            lootingBar.gameObject.SetActive(false);
+            progressBar.gameObject.SetActive(true);
         }
 
         private void Start() {
@@ -31,16 +36,29 @@ namespace Permanence.Scripts.Mechanics
         }
 
         private void ShowLootingBar(CardProgressBar cardProgressBar) {
-            lootingBar.gameObject.SetActive(true);
+            if (positionCurve == null)
+            {
+                positionCurve = GeneratePositionCurve(cardProgressBar);
+            }
+            // progressBar.gameObject.SetActive(true);
         }
 
         private void HideLootingBar(CardProgressBar cardProgressBar) {
-            lootingBar.gameObject.SetActive(false);
+            // progressBar.gameObject.SetActive(false);
         }
 
         private void SetPercentage(CardProgressBar cardProgressBar)
         {
-            lootingBar.localPosition = new Vector2(0 - cardProgressBar.Value * lootingBar.localScale.x, 0);
+            if (positionCurve == null)
+            {
+                positionCurve = GeneratePositionCurve(cardProgressBar);
+            }
+            progressBar.transform.localPosition = new Vector2(positionCurve.Evaluate(cardProgressBar.Value), progressBar.transform.localPosition.y);
+        }
+
+        private AnimationCurve GeneratePositionCurve(CardProgressBar progressBar)
+        {
+            return AnimationCurve.Linear(progressBar.MinValue, emptyBarPosition, progressBar.MaxValue, fullBarPosition);
         }
     }
 }

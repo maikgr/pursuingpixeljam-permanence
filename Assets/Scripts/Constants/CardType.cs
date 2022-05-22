@@ -18,6 +18,8 @@ namespace Permanence.Scripts.Constants
         Everbud,
         Bandit,
         Fire,
-        Forest
+        Forest,
+        Wood,
+        NPC
     }
 }
