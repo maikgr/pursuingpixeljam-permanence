@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Permanence.Scripts.UI;
 
 namespace Permanence.Scripts.Cores
 {
@@ -21,30 +22,26 @@ namespace Permanence.Scripts.Cores
             }
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
             GenerationNumber = 1;
         }
 
-        private void Start() {
-            if (SceneManager.GetActiveScene().name == startSceneName)
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.name == startSceneName)
             {
                 GenerationNumber = 1;
-                PlayerName = "Player";
-            }
-        }
-
-        public void SetName(string name) {
-            if (string.IsNullOrEmpty(name))
-            {
-                this.PlayerName = "Player";
-            }
-            else
-            {
-                this.PlayerName = name;
             }
         }
         
         public void IncreaseGeneration() {
             ++GenerationNumber;
+        }
+
+        public void SetName(string name)
+        {
+            this.PlayerName = name;
         }
     }
 }

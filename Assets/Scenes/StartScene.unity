@@ -225,17 +225,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &58593349 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 720430038651630701, guid: df87a46ccac9f9a4fac6686a7960c469, type: 3}
-  m_PrefabInstance: {fileID: 720430038598018088}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b15a76c6291e784cb00de4ad7d99154, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &201444804
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,9 +345,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 58593349}
-        m_TargetAssemblyTypeName: Permanence.Scripts.Cores.PlayerPrefController,
-          Assembly-CSharp
+      - m_Target: {fileID: 1336148519}
+        m_TargetAssemblyTypeName: Permanence.Scripts.UI.NameInputController, Assembly-CSharp
         m_MethodName: SetName
         m_Mode: 0
         m_Arguments:
@@ -829,6 +817,7 @@ GameObject:
   - component: {fileID: 1336148517}
   - component: {fileID: 1336148516}
   - component: {fileID: 1336148515}
+  - component: {fileID: 1336148519}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -921,6 +910,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1336148519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336148514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52444f55a0360e647909c737b55ec465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSceneName: GameScene
 --- !u!1 &1444511864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,9 +1609,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2045063744}
-        m_TargetAssemblyTypeName: Permanence.Scripts.UI.SceneChangeController, Assembly-CSharp
-        m_MethodName: ChangeScene
+      - m_Target: {fileID: 1336148519}
+        m_TargetAssemblyTypeName: Permanence.Scripts.UI.NameInputController, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
