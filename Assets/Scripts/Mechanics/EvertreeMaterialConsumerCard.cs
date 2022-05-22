@@ -31,12 +31,10 @@ namespace Permanence.Scripts.Mechanics
         private List<GameObject> rewards;
         private float timeLeft;
         private bool isWorking;
-        private CardProgressBar cardProgressBar;
         private int evertreeLevel;
         public int EvertreeLevel => evertreeLevel;
 
         protected override void Awake() {
-            cardProgressBar = new CardProgressBar();
             evertreeLevel = 0;
         }
         private void Start() {
@@ -44,11 +42,10 @@ namespace Permanence.Scripts.Mechanics
             rewards = GetRewards(evertreeLevel);
         }
 
-        protected virtual void Update() {
+       private void Update() {
             if (isWorking)
             {
                 timeLeft -= Time.deltaTime;
-                cardProgressBar.Value = timeLeft/workTime;
                 if (timeLeft <= 0)
                 {
                     isWorking = false;
@@ -62,14 +59,12 @@ namespace Permanence.Scripts.Mechanics
             if (requiredMaterials.Any(mat => !mat.isFulfilled)) return false;
             requiredMaterials.Clear();
             isWorking = true;
-            cardProgressBar.IsShow = true;
             timeLeft = workTime;
             SfxController.instance.PlayAudio(GetAudioType(evertreeLevel), transform.position);
             return true;
         }
 
         protected void SpawnLoot(List<GameObject> loots) {
-            cardProgressBar.IsShow = false;
             foreach(var loot in loots)
             {
                 var spawnPoint = resourceSpawnArea.GetRandomSpawnPoint(transform.position);

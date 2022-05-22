@@ -78,7 +78,7 @@ namespace Permanence.Scripts.UI {
             {
                 var modalSlot = slot.gameObject.GetComponent<DetailsModalSlotController>();
                 var gameCard = selectableCard.GetComponent<GameCard>();
-                if (!modalSlot.TrySetSlot(gameCard))
+                if (modalSlot == null || !modalSlot.TrySetSlot(gameCard))
                 {
                     selectableCard.ResetPosition();
                 }
@@ -86,6 +86,10 @@ namespace Permanence.Scripts.UI {
                 {
                     GameObject.Destroy(selectableCard.gameObject);
                 }
+            }
+            else
+            {
+                UnsetCard();
             }
         }
     }

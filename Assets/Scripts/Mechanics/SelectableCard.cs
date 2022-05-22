@@ -31,6 +31,9 @@ namespace Permanence.Scripts.Mechanics
             cardCollider = GetComponent<Collider2D>();
             body2D = GetComponent<Rigidbody2D>();
             mainCamera = Camera.main;
+        }
+
+        private void Start() {
             canvasGameCard = GameObject.FindGameObjectWithTag(GameTags.CanvasGameCard).GetComponent<CanvasGameCard>();
         }
 
@@ -72,7 +75,6 @@ namespace Permanence.Scripts.Mechanics
         }
 
         private void DropCard() {
-            canvasGameCard.UnsetCard();
             cardCollider.enabled = true;
             spriteRenderer.sortingOrder = 1;
             SfxController.instance.PlayAudio(GameSfxType.CardPlaced, transform.position);

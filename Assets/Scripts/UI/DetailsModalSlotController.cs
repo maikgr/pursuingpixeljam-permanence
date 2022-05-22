@@ -7,6 +7,7 @@ using TMPro;
 using Permanence.Scripts.Cores;
 using Permanence.Scripts.Constants;
 using Permanence.Scripts.Mechanics;
+using Permanence.Scripts.Entities;
 
 namespace Permanence.Scripts.UI {
     public class DetailsModalSlotController : MonoBehaviour
@@ -20,6 +21,7 @@ namespace Permanence.Scripts.UI {
         public CardType RequiredCardType { get; private set;}
         private Camera mainCamera;
         private MaterialConsumerCard consumerCard;
+        private MaterialConsumerCard<CardProgressBar> eventConsumerCard;
         private int slotIndex;
 
         private void Awake() {
@@ -37,6 +39,7 @@ namespace Permanence.Scripts.UI {
             {
                 ClearSlot();
             }
+            this.eventConsumerCard = null;
 
             materialText.text = cardType.ToString();
             RequiredCardType = cardType;
@@ -44,17 +47,50 @@ namespace Permanence.Scripts.UI {
             this.slotIndex = slotIndex;
         }
 
+        public void SetSlotRequirement(CardType cardType, MaterialConsumerCard<CardProgressBar> eventConsumerCard, int slotIndex)
+        {
+            if (eventConsumerCard.requiredMaterials[slotIndex].isFulfilled)
+            {
+                this.materialImage.sprite = eventConsumerCard.requiredMaterials[slotIndex].material.cardSprite;
+                this.materialImage.color = Color.white;
+            }
+            else
+            {
+                ClearSlot();
+            }
+            this.consumerCard = null;
+
+            materialText.text = cardType.ToString();
+            RequiredCardType = cardType;
+            this.eventConsumerCard = eventConsumerCard;
+            this.slotIndex = slotIndex;
+        }
+
         public bool TrySetSlot(GameCard gameCard)
         {
-            if (!RequiredCardType.Equals(gameCard.cardType)
-                || consumerCard.requiredMaterials[slotIndex].isFulfilled)
+            if (!RequiredCardType.Equals(gameCard.cardType))
+            {
+                return false;
+            }
+            if (consumerCard != null && consumerCard.requiredMaterials[slotIndex].isFulfilled)
+            {
+                return false;
+            }
+            if (eventConsumerCard != null && eventConsumerCard.requiredMaterials[slotIndex].isFulfilled)
             {
                 return false;
             }
             SfxController.instance.PlayAudio(GameSfxType.MaterialsPlaced, transform.position);
             materialImage.sprite = gameCard.cardSprite;
             materialImage.color = Color.white;
-            consumerCard.AddMaterial(gameCard, slotIndex);
+            if (consumerCard != null)
+            {
+                consumerCard.AddMaterial(gameCard, slotIndex);
+            }
+            if (eventConsumerCard != null)
+            {
+                eventConsumerCard.AddMaterial(gameCard, slotIndex);
+            }
             return true;
         }
 

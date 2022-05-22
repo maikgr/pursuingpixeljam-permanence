@@ -6,6 +6,7 @@ using TMPro;
 using Permanence.Scripts.Extensions;
 using Permanence.Scripts.Cores;
 using Permanence.Scripts.Constants;
+using Permanence.Scripts.Entities;
 using UnityEngine.EventSystems;
 using Permanence.Scripts.Mechanics;
 
@@ -96,9 +97,11 @@ namespace Permanence.Scripts.UI {
             // Check if card requires materials
             var numberOfSlots = 0;
             var consumerCard = gameCard.gameObject.GetComponent<MaterialConsumerCard>();
+            var eventConsumerCard = gameCard.gameObject.GetComponent<MaterialConsumerCard<CardProgressBar>>();
             if (consumerCard != null)
             {
                 numberOfSlots = Mathf.Min(materialSlots.Count, consumerCard.requiredMaterials.Count);
+            
                 for (var i = 0; i < materialSlots.Count; ++i)
                 {
                     if (i < consumerCard.requiredMaterials.Count)
@@ -106,6 +109,21 @@ namespace Permanence.Scripts.UI {
                         var requiredMaterial = consumerCard.requiredMaterials[i];
                         var materialSlot = materialSlots[i];
                         materialSlot.SetSlotRequirement(requiredMaterial.cardType, consumerCard, i);
+                        materialSlot.gameObject.SetActive(true);
+                    }
+                }
+            }
+            else if (eventConsumerCard != null)
+            {
+                numberOfSlots = Mathf.Min(materialSlots.Count, eventConsumerCard.requiredMaterials.Count);
+            
+                for (var i = 0; i < materialSlots.Count; ++i)
+                {
+                    if (i < eventConsumerCard.requiredMaterials.Count)
+                    {
+                        var requiredMaterial = eventConsumerCard.requiredMaterials[i];
+                        var materialSlot = materialSlots[i];
+                        materialSlot.SetSlotRequirement(requiredMaterial.cardType, eventConsumerCard, i);
                         materialSlot.gameObject.SetActive(true);
                     }
                 }
