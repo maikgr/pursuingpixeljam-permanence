@@ -19,6 +19,7 @@ namespace Permanence.Scripts.Mechanics
         private List<GameObject> normalRewards;
         [SerializeField]
         private ResourceSpawnArea resourceSpawnArea;
+        private List<MaterialConsumerGameCard> defaultMats;
         private float timeTaken;
         private bool isWorking;
         private CardProgressBar cardProgressBar;
@@ -32,17 +33,19 @@ namespace Permanence.Scripts.Mechanics
             };
             timeTaken = 0;
             isWorking = false;
+            defaultMats = CopyRequirement(requiredMaterials);
         }
 
-       private void Update() {
+       private void LateUpdate() {
+            cardProgressBar.Value = timeTaken;
+            DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
             if (isWorking)
             {
                 timeTaken += Time.deltaTime;
-                cardProgressBar.Value = timeTaken;
-                DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
-                if (timeTaken <= 0)
+                if (timeTaken >= workTime)
                 {
                     isWorking = false;
+                    timeTaken = 0;
                     if (Npcs.Count > 0)
                     {
                         SpawnNpc(Npcs);
@@ -51,12 +54,15 @@ namespace Permanence.Scripts.Mechanics
                     {
                         SpawnLoot(normalRewards);
                     }
+                    requiredMaterials = CopyRequirement(defaultMats);
                 }
             }
         }
         
         public override bool SubmitMaterial()
         {
+            if (requiredMaterials.Any(mat => !mat.isFulfilled)) return false;
+            requiredMaterials.Clear();
             isWorking = true;
             DispatchEvent(CardProgressBarEvent.ON_PROGRESS_START, cardProgressBar);
             return true;
@@ -75,6 +81,21 @@ namespace Permanence.Scripts.Mechanics
             var spawnPoint = resourceSpawnArea.GetRandomSpawnPoint(transform.position);
             Instantiate(loot, spawnPoint, Quaternion.identity);
             SfxController.instance.PlayAudio(GameSfxType.CardSpawn, transform.position);
+        }
+
+        private List<MaterialConsumerGameCard> CopyRequirement(List<MaterialConsumerGameCard> source)
+        {
+            var newList = new List<MaterialConsumerGameCard>();
+            source.ForEach(s => {
+                newList.Add(new MaterialConsumerGameCard
+                {
+                    isFulfilled = !!s.isFulfilled,
+                    cardType = s.cardType,
+                    material = null
+                });
+            });
+
+            return newList;
         }
     }
 }

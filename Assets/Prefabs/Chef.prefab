@@ -239,7 +239,7 @@ MonoBehaviour:
   - cardType: 8
     material: {fileID: 0}
     isFulfilled: 0
-  workTime: 30
+  workTime: 15
   Npcs:
   - {fileID: 8505225541566693576, guid: 411a951111fbaba45a78f61eb28118c7, type: 3}
   - {fileID: 562934066871751874, guid: 316dcdf30fdbc7b4c8e9f04f36928686, type: 3}

@@ -147,9 +147,21 @@ namespace Permanence.Scripts.UI {
         {
             SfxController.instance.PlayAudio(GameSfxType.ButtonClick, transform.position);
             var consumerCard = selectedCard.gameObject.GetComponent<MaterialConsumerCard>();
+            var eventConsumerCard = selectedCard.gameObject.GetComponent<MaterialConsumerCard<CardProgressBar>>();
             if (consumerCard != null)
             {
                 if (consumerCard.SubmitMaterial())
+                {
+                    HideModal();
+                }
+                else
+                {
+                    // Show warning
+                }
+            }
+            else if (eventConsumerCard != null)
+            {
+                if (eventConsumerCard.SubmitMaterial())
                 {
                     HideModal();
                 }
