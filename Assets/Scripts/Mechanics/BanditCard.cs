@@ -10,7 +10,7 @@ using Permanence.Scripts.Constants;
 
 namespace Permanence.Scripts.Mechanics
 {
-    public class BanditCard : EventBusBehaviour<CardProgressBar>
+    public class BanditCard : EventBusBehaviour<CardHealthBar>
     {
         [SerializeField]
         private float health;
@@ -20,7 +20,7 @@ namespace Permanence.Scripts.Mechanics
         private float fireSpawnInterval;
         private float currentHealth;
         private float damageMultiplier;
-        private CardProgressBar cardProgressBar;
+        private CardHealthBar cardHealthBar;
         private bool isBeingDamaged;
         private Vector2 fireCardOffset;
         private float nextFireSpawn;
@@ -30,7 +30,7 @@ namespace Permanence.Scripts.Mechanics
         protected override void Awake()
         {
             base.Awake();
-            cardProgressBar = new CardProgressBar()
+            cardHealthBar = new CardHealthBar()
             {
                 MinValue = 0,
                 MaxValue = health
@@ -45,8 +45,8 @@ namespace Permanence.Scripts.Mechanics
             if (isBeingDamaged)
             {
                 currentHealth -= Time.deltaTime * damageMultiplier;
-                cardProgressBar.Value = currentHealth / health;
-                DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
+                cardHealthBar.Value = health - currentHealth;
+                DispatchEvent(CardHealthBarEvent.ON_UPDATE, cardHealthBar);
                 if (currentHealth <= 0)
                 {
                     isBeingDamaged = false;
@@ -90,16 +90,12 @@ namespace Permanence.Scripts.Mechanics
         {
             this.onCardDeath = onCardDeath;
             isBeingDamaged = true;
-            cardProgressBar.IsShow = true;
-            DispatchEvent(CardProgressBarEvent.ON_PROGRESS_START, cardProgressBar);
             this.damageMultiplier = damageMultiplier;
         }
 
         public void StopReduceHealth()
         {
             isBeingDamaged = false;
-            cardProgressBar.IsShow = false;
-            DispatchEvent(CardProgressBarEvent.ON_PROGRESS_STOP, cardProgressBar);
             this.damageMultiplier = 1f;
         }
 

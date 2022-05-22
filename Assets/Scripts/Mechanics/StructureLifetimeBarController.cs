@@ -6,15 +6,16 @@ using TMPro;
 using System.Globalization;
 using Permanence.Scripts.Constants;
 using Permanence.Scripts.Entities;
+using Permanence.Scripts.Cores;
 
 namespace Permanence.Scripts.Mechanics
 {
-    [RequireComponent(typeof(StructureCard))]
+    [RequireComponent(typeof(EventBusBehaviour<CardHealthBar>))]
     public class StructureLifetimeBarController : MonoBehaviour
     {
         [SerializeField]
         private SpriteRenderer healthBar;
-        private StructureCard structureCard;
+        private EventBusBehaviour<CardHealthBar> healthSourceCard;
         private float emptyBarPosition;
         private float fullBarPosition;
         private Color startColor;
@@ -22,7 +23,7 @@ namespace Permanence.Scripts.Mechanics
         private AnimationCurve[] progressCurves;
 
         private void Awake() {
-            structureCard = GetComponent<StructureCard>();
+            healthSourceCard = GetComponent<EventBusBehaviour<CardHealthBar>>();
             emptyBarPosition = StructureLifetimeBarValues.EMPTY_BAR_POSITION;
             fullBarPosition = StructureLifetimeBarValues.FULL_BAR_POSITION;
             ColorUtility.TryParseHtmlString(StructureLifetimeBarValues.START_COLOR_HEX, out startColor);
@@ -30,11 +31,11 @@ namespace Permanence.Scripts.Mechanics
         }
 
         private void Start() {
-            structureCard.AddEventListener(CardHealthBarEvent.ON_UPDATE, SetPercentage);
+            healthSourceCard.AddEventListener(CardHealthBarEvent.ON_UPDATE, SetPercentage);
         }
 
         private void OnDestroy() {
-            structureCard.RemoveEventListener(CardHealthBarEvent.ON_UPDATE, SetPercentage);
+            healthSourceCard.RemoveEventListener(CardHealthBarEvent.ON_UPDATE, SetPercentage);
         }
 
         private void SetPercentage(CardHealthBar value)
