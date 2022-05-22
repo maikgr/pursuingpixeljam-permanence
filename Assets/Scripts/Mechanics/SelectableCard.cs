@@ -39,7 +39,7 @@ namespace Permanence.Scripts.Mechanics
         }
 
         private void Update() {
-            if (Input.GetMouseButtonDown(0) && !IsSelected)
+            if (Input.GetMouseButtonDown(0) && !IsSelected && !EventSystem.current.IsPointerOverGameObject())
             {
                 var hit = Physics2D.Raycast(mainCamera.WorldMousePosition(), Vector2.zero);
                 if (hit.collider != null && hit.collider.gameObject.Equals(gameObject))
