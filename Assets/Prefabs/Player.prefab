@@ -164,9 +164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetimeText: {fileID: 1870008116508410490}
-  totalLifetime: 100
+  totalLifetime: 30
   OldPlayer: {fileID: 472607978720388158, guid: 5690b139712269c4daa56ea223b2fa72, type: 3}
-  NewPlayer: {fileID: 1870008114813206112}
+  NewPlayer: {fileID: 1870008114813206104}
 --- !u!114 &1870008114813206111
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ namespace Permanence.Scripts.Mechanics
         [SerializeField]
         private OldPlayerNameController OldPlayer;
         [SerializeField]
-        private GameObject NewPlayer;
+        private PlayerLifetimeController NewPlayer;
         private float currentLifetime;
         private bool isLifetimeReducing;
         private AnimationCurve[] colorCurves;
@@ -99,6 +99,7 @@ namespace Permanence.Scripts.Mechanics
             var oldPlayer = Instantiate(OldPlayer, oldSpawnPoint, Quaternion.identity);
             oldPlayer.SetName(playerNameController.CurrentName);
             var newPlayer = Instantiate(NewPlayer, newSpawnPoint, Quaternion.identity);
+            newPlayer.totalLifetime = totalLifetime + 5;
             SfxController.instance.PlayAudio(Constants.GameSfxType.CardSpawn, transform.position);
             Destroy(gameObject);
         }

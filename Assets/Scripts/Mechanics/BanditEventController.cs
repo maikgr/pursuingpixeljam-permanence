@@ -89,7 +89,7 @@ namespace Permanence.Scripts.Mechanics
         {
             if (spawnedBanditsCount > 0) return;
             eventLevel += 1;
-            nextEventCheckTime = Time.time + 90;
+            nextEventCheckTime = Time.time + 30;
             isEventRunning = false;
         }
 
