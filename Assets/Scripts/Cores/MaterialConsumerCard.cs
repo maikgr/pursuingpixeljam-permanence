@@ -9,18 +9,15 @@ using Permanence.Scripts.UI;
 
 namespace Permanence.Scripts.Mechanics
 {
-    public abstract class MaterialConsumerCard : EventBusBehaviour<CardProgressBar>
+    public abstract class MaterialConsumerCard : MonoBehaviour
     {
         [SerializeField]
         public List<MaterialConsumerGameCard> requiredMaterials;
         protected DetailsModalController detailsModal;
 
-        #pragma warning disable 0114
         protected virtual void Awake() {
-            base.Awake();
             detailsModal = GameObject.FindGameObjectWithTag(GameTags.GameCanvas).GetComponent<DetailsModalController>();
         }
-        #pragma warning restore 0114
 
         public virtual void AddMaterial(GameCard gameCard, int index)
         {

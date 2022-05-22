@@ -8,7 +8,9 @@ namespace Permanence.Scripts.Constants
         CardSpawn,
         DetailsOpen,
         MaterialsPlaced,
+        EvertreeUpgrade0,
         EvertreeUpgrade1,
+        EvertreeUpgrade2,
         Fire,
         BanditSpawn
     }

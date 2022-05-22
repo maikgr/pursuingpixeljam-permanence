@@ -9,7 +9,7 @@ using Permanence.Scripts.Entities;
 
 namespace Permanence.Scripts.Mechanics
 {
-    public class StructureCard : EventBusBehaviour<CardProgressBar>
+    public class StructureCard : EventBusBehaviour<CardHealthBar>
     {
         [SerializeField]
         private float health;
@@ -18,14 +18,14 @@ namespace Permanence.Scripts.Mechanics
         private float currentHealth;
         private float speedMultiplier;
         private bool isReducing;
-        private CardProgressBar cardProgressBar;
+        private CardHealthBar cardHealthBar;
         public float CurrentHealth => currentHealth;
         public float MaxHealth => health;
 
         protected override void Awake() {
             base.Awake();
             currentHealth = health;
-            cardProgressBar = new CardProgressBar()
+            cardHealthBar = new CardHealthBar()
             {
                 MinValue = 0,
                 MaxValue = health
@@ -35,8 +35,8 @@ namespace Permanence.Scripts.Mechanics
         private void Update() {
             if (currentHealth > 0)
             {
-                cardProgressBar.Value = health - currentHealth;
-                DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
+                cardHealthBar.Value = health - currentHealth;
+                DispatchEvent(CardHealthBarEvent.ON_UPDATE, cardHealthBar);
                 if (isReducing)
                 {
                     currentHealth -= Time.deltaTime * speedMultiplier;

@@ -42,10 +42,10 @@ namespace Permanence.Scripts.UI {
         private void Awake() {
             mainCamera = Camera.main;
             bgWidthPreset = new List<float> {
-                350,
-                460,
-                550,
-                640
+                380,
+                475,
+                565,
+                665
             };
         }
 

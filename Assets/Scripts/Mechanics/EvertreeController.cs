@@ -7,19 +7,22 @@ using System.Collections;
 namespace Permanence.Scripts.Mechanics
 {
     [RequireComponent(typeof(StructureCard))]
-    public class EvertreeBudController : ResourceCardBehaviour
+    [RequireComponent(typeof(EvertreeMaterialConsumerCard))]
+    public class EvertreeController : ResourceCardBehaviour
     {
         private StructureCard structureCard;
+        private EvertreeMaterialConsumerCard evertreeMaterial;
 
         protected override void Awake()
         {
             base.Awake();
             structureCard = GetComponent<StructureCard>();
+            evertreeMaterial = GetComponent<EvertreeMaterialConsumerCard>();
             DelayLootStart(1f);
         }
 
         protected override void Update() {
-            if (structureCard.CurrentHealth < structureCard.MaxHealth) {
+            if (structureCard.CurrentHealth == structureCard.MaxHealth) {
                 timeUntilNextLoot -= Time.deltaTime;
                 cardProgressBar.Value = lootTime - timeUntilNextLoot;
                 DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);

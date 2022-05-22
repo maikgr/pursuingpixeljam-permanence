@@ -20,6 +20,8 @@ namespace Permanence.Scripts.Constants
         Fire,
         Forest,
         Wood,
-        NPC
+        NPC,
+        GoldenFish,
+        IronOre
     }
 }

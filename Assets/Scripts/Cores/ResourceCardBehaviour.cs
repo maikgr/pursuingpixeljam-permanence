@@ -1,9 +1,10 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Permanence.Scripts.Entities;
 using Permanence.Scripts.Extensions;
 using Permanence.Scripts.Constants;
+using System.Linq;
 
 namespace Permanence.Scripts.Cores
 {
@@ -14,7 +15,7 @@ namespace Permanence.Scripts.Cores
         [SerializeField]
         protected float lootTime;
         [SerializeField]
-        protected List<GameObject> loots;
+        protected List<ResourceCardLoot> loots;
         protected float timeUntilNextLoot;
         protected bool isLooting;
         protected float speedModifier = 1f;
@@ -61,11 +62,18 @@ namespace Permanence.Scripts.Cores
             DispatchEvent(CardProgressBarEvent.ON_PROGRESS_STOP, cardProgressBar);
         }
         
-        protected void SpawnLoot(List<GameObject> loots) {
-            var loot = loots.GetRandom();
+        protected void SpawnLoot(List<ResourceCardLoot> loots) {
+            var resourceCardLoot = loots.First(l => UnityEngine.Random.value <= l.chance);
             var spawnPoint = resourceSpawnArea.GetRandomSpawnPoint(transform.position);
-            var lootObj = Instantiate(loot, spawnPoint, Quaternion.identity);
+            var lootObj = Instantiate(resourceCardLoot.loot, spawnPoint, Quaternion.identity);
             SfxController.instance.PlayAudio(GameSfxType.CardSpawn, transform.position);
         }
+    }
+
+    [Serializable]
+    public class ResourceCardLoot
+    {
+        public GameObject loot;
+        public float chance;
     }
 }

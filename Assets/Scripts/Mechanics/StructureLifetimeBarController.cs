@@ -13,8 +13,8 @@ namespace Permanence.Scripts.Mechanics
     public class StructureLifetimeBarController : MonoBehaviour
     {
         [SerializeField]
-        private SpriteRenderer progressBar;
-        private StructureCard progressCard;
+        private SpriteRenderer healthBar;
+        private StructureCard structureCard;
         private float emptyBarPosition;
         private float fullBarPosition;
         private Color startColor;
@@ -22,7 +22,7 @@ namespace Permanence.Scripts.Mechanics
         private AnimationCurve[] progressCurves;
 
         private void Awake() {
-            progressCard = GetComponent<StructureCard>();
+            structureCard = GetComponent<StructureCard>();
             emptyBarPosition = StructureLifetimeBarValues.EMPTY_BAR_POSITION;
             fullBarPosition = StructureLifetimeBarValues.FULL_BAR_POSITION;
             ColorUtility.TryParseHtmlString(StructureLifetimeBarValues.START_COLOR_HEX, out startColor);
@@ -30,34 +30,34 @@ namespace Permanence.Scripts.Mechanics
         }
 
         private void Start() {
-            progressCard.AddEventListener(CardProgressBarEvent.ON_PROGRESSING, SetPercentage);
+            structureCard.AddEventListener(CardHealthBarEvent.ON_UPDATE, SetPercentage);
         }
 
         private void OnDestroy() {
-            progressCard.RemoveEventListener(CardProgressBarEvent.ON_PROGRESSING, SetPercentage);
+            structureCard.RemoveEventListener(CardHealthBarEvent.ON_UPDATE, SetPercentage);
         }
 
-        private void SetPercentage(CardProgressBar cardProgressBar)
+        private void SetPercentage(CardHealthBar value)
         {
             if (progressCurves == null)
             {
-                progressCurves = GenerateColorCurves(cardProgressBar);
+                progressCurves = GenerateColorCurves(value);
             }
-            progressBar.transform.localPosition = new Vector2(progressBar.transform.localPosition.x, progressCurves[3].Evaluate(cardProgressBar.Value));
-            progressBar.color = new Color(
-                progressCurves[0].Evaluate(cardProgressBar.Value),
-                progressCurves[1].Evaluate(cardProgressBar.Value),
-                progressCurves[2].Evaluate(cardProgressBar.Value),
+            healthBar.transform.localPosition = new Vector2(healthBar.transform.localPosition.x, progressCurves[3].Evaluate(value.Value));
+            healthBar.color = new Color(
+                progressCurves[0].Evaluate(value.Value),
+                progressCurves[1].Evaluate(value.Value),
+                progressCurves[2].Evaluate(value.Value),
                 0.6f
             );
         }
 
-        private AnimationCurve[] GenerateColorCurves(CardProgressBar progressBar)
+        private AnimationCurve[] GenerateColorCurves(CardHealthBar cardValue)
         {
-            var redCurve = AnimationCurve.Linear(progressBar.MinValue, startColor.r, progressBar.MaxValue, endColor.r);
-            var greenCurve = AnimationCurve.Linear(progressBar.MinValue, startColor.g, progressBar.MaxValue, endColor.g);
-            var blueCurve = AnimationCurve.Linear(progressBar.MinValue, startColor.b, progressBar.MaxValue, endColor.b);
-            var positionCurve = AnimationCurve.Linear(progressBar.MinValue, fullBarPosition, progressBar.MaxValue, emptyBarPosition);
+            var redCurve = AnimationCurve.Linear(cardValue.MinValue, startColor.r, cardValue.MaxValue, endColor.r);
+            var greenCurve = AnimationCurve.Linear(cardValue.MinValue, startColor.g, cardValue.MaxValue, endColor.g);
+            var blueCurve = AnimationCurve.Linear(cardValue.MinValue, startColor.b, cardValue.MaxValue, endColor.b);
+            var positionCurve = AnimationCurve.Linear(cardValue.MinValue, fullBarPosition, cardValue.MaxValue, emptyBarPosition);
 
             return new AnimationCurve[4]
             {
