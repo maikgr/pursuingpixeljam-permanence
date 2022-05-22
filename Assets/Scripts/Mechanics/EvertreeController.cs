@@ -1,6 +1,7 @@
 using UnityEngine;
 using Permanence.Scripts.Cores;
 using Permanence.Scripts.Entities;
+using Permanence.Scripts.UI;
 using System;
 using System.Collections;
 
@@ -12,6 +13,7 @@ namespace Permanence.Scripts.Mechanics
     {
         private StructureCard structureCard;
         private EvertreeMaterialConsumerCard evertreeMaterial;
+        private bool isGameOver;
 
         protected override void Awake()
         {
@@ -31,6 +33,11 @@ namespace Permanence.Scripts.Mechanics
                     SpawnLoot(loots);
                     timeUntilNextLoot = lootTime;
                 }
+            }
+            if (structureCard.CurrentHealth <= 0 && !isGameOver)
+            {
+                isGameOver = true;
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<SceneChangeController>().ChangeScene();
             }
         }
 
