@@ -78,7 +78,6 @@ namespace Permanence.Scripts.Mechanics
             spawnedBanditsCount = eventLevel;
         }
 
-
         public void BanditRemoved()
         {
             --spawnedBanditsCount;
@@ -89,7 +88,7 @@ namespace Permanence.Scripts.Mechanics
         {
             if (spawnedBanditsCount > 0) return;
             eventLevel += 1;
-            nextEventCheckTime = Time.time + 30;
+            nextEventCheckTime = Time.time + 90;
             isEventRunning = false;
         }
 

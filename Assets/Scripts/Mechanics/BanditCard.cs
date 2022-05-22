@@ -72,7 +72,7 @@ namespace Permanence.Scripts.Mechanics
             if (flammables.Count.Equals(0) && fires.Count.Equals(0)) return;
 
             // Prioritize setting resource on fire
-            var targetPos = Vector2.zero;
+            var targetPos = Vector3.zero;
             if (flammables.Count > 0)
             {
                 targetPos = flammables.GetRandom().transform.position;
@@ -81,7 +81,8 @@ namespace Permanence.Scripts.Mechanics
             {
                 targetPos = fires.GetRandom().transform.position;
             }
-            Instantiate(fireCard, targetPos + fireCardOffset, Quaternion.identity);
+            targetPos = new Vector3(targetPos.x + fireCardOffset.x, targetPos.y + fireCardOffset.y, targetPos.z - 1);
+            Instantiate(fireCard, targetPos, Quaternion.identity);
             SfxController.instance.PlayAudio(GameSfxType.Fire, targetPos);
         }
 

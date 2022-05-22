@@ -201,7 +201,8 @@ MonoBehaviour:
   cardName: Human Bandit
   cardDescription: Flamethrowers in their hands and hatred in their hearts, these
     wicked beings seek to bring ruin to your Evertree!
-  cardInstruction: 
+  cardInstruction: Spawns Fire card every 30 seconds. You can remove this card by
+    stacking player card on top of it.
   cardSprite: {fileID: -4642843833476724254, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!114 &309702778271092775
 MonoBehaviour:
@@ -217,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   fireCard: {fileID: 5817075233569163855, guid: 56bd889f43fed8e4899e64ff4398e2bd, type: 3}
-  fireSpawnInterval: 15
+  fireSpawnInterval: 30
 --- !u!1 &4538654759123202915
 GameObject:
   m_ObjectHideFlags: 0
