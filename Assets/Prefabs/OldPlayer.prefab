@@ -301,10 +301,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 1
   cardName: Ancestor
-  cardDescription: Used to be a hardworking tree spirit, but now is old and fragile.
-    Doesn't have the energy to build anymore, but can still teach the young tree
-    spirits a few tricks.
-  cardInstruction: 
+  cardDescription: Too tired to do anything.
+  cardInstruction: 'Used to be a hardworking tree spirit, but now is old and fragile.
+    Doesn''t have the energy to build anymore but can enjoy watching their great-grandkids
+    at work.  '
   cardSprite: {fileID: 8883374863942664610, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!114 &7913285197359822324
 MonoBehaviour:

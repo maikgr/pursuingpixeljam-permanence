@@ -283,8 +283,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 13
   cardName: Fire
-  cardDescription: Hot, hot, hot! Quick! Put it out, before it spreads!
-  cardInstruction: 
+  cardDescription: Caused by Bandits! Will deal damage to whatever it's on. Put it
+    out by yourself or use some water.
+  cardInstruction: 'Hot, hot, hot! Quick! Put it out, before it spreads!  '
   cardSprite: {fileID: -3668562649319072968, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!114 &5817075233569163855
 MonoBehaviour:

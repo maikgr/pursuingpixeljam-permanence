@@ -361,9 +361,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 9
   cardName: Stone
-  cardDescription: A great building material, used in most construction projects.
-    Contrary to popular belief, it is not weak to paper.
-  cardInstruction: 
+  cardDescription: 'Mined from Miners in the Mineshaft Great material to help build
+    the Evertree '
+  cardInstruction: Contrary to popular belief, it is not weak to paper
   cardSprite: {fileID: -1627059902095274846, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!1 &6590241115292424622
 GameObject:

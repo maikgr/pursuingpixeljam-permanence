@@ -209,9 +209,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 8
   cardName: Fish
-  cardDescription: "Can be prepared and eaten in dozens of ways. Nutritious, fresh,
+  cardDescription: Freshly fished from the river! Can be given to the Chef.
+  cardInstruction: "Can be prepared and eaten in dozens of ways. Nutritious, fresh,
     and tasty, what\u2019s not to love?"
-  cardInstruction: 
   cardSprite: {fileID: 6563070284310214681, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!1 &1087344470019665788
 GameObject:

@@ -260,9 +260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 18
   cardName: Ore
-  cardDescription: An unprocessed material with lots of potential! Such power contained
+  cardDescription: Mined by the miners! Seems like this can be used to grow the Evertree!
+  cardInstruction: An unprocessed material with lots of potential! Such power contained
     in this small piece of rock.
-  cardInstruction: 
   cardSprite: {fileID: 1413486150521033767, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!1 &4987153785746091828
 GameObject:

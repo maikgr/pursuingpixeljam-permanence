@@ -445,7 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 15
   cardName: Wood
-  cardDescription: "Easy to work with. Can be used to build all manner of houses
-    and tools. Just watch out for fire\u2026"
-  cardInstruction: 
+  cardDescription: 'Chopped up in the Forest Great material for growing the Evertree '
+  cardInstruction: 'This is just ordinary wood. Not to be confused with wood from
+    the Evertree '
   cardSprite: {fileID: 3003631398333999520, guid: a1327b4095717a84db78a3493394fded, type: 3}

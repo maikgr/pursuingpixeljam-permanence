@@ -994,10 +994,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 14
   cardName: Saplings
-  cardDescription: "Little baby trees! Delicate and soft. Give them water and moral
-    support. \tTREE: Not quite as eternal as your Evertree\u2013 but you\u2019ll
-    need to get Wood from somewhere. "
-  cardInstruction: 
+  cardDescription: The forest is thriving thanks to the Evertree growing! Great place
+    to get some (non-Evertree) Wood.
+  cardInstruction: "Little baby trees! Delicate and soft. Give them water and moral
+    support. The trees are not quite as eternal as your Evertree\u2013 but you\u2019ll
+    need to get Wood from somewhere.   "
   cardSprite: {fileID: -694126479088893765, guid: 1117d7c2bccec4f4883885ec30e907a8, type: 3}
 --- !u!114 &2238967797777605696
 MonoBehaviour:

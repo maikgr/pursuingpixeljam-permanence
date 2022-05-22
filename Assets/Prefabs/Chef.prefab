@@ -185,9 +185,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 16
   cardName: Chef
-  cardDescription: "She might not have a kitchen right now, but that doesn\u2019t
+  cardDescription: Moved into the Evertree after it grew bigger. Give her fishes
+    to invite other creatures.
+  cardInstruction: "She might not have a kitchen right now, but that doesn\u2019t
     mean she\u2019s helpless."
-  cardInstruction: Give her 3 fishes to invite other creatures.
   cardSprite: {fileID: -3054907766096214091, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!114 &562934066871751873
 MonoBehaviour:

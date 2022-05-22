@@ -537,11 +537,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 16
   cardName: Miner Crew
-  cardDescription: "Hardworking and earnest breadwinners, these young bugs are here
-    to help! Send them to the Mineshaft where they\u2019ll happily work all day long.
-    As long as you can put up with their spontaneous impromptu song numbers. For
-    rock and stone!"
-  cardInstruction: 
+  cardDescription: 'They were lured over by Chef''s fishes! Hopefully they can help
+    mine some stone and ore. '
+  cardInstruction: Hardworking, earnest and here to help! As long as you can put
+    up with their spontaneous impromptu song numbers. For rock and stone!
   cardSprite: {fileID: -9016436576232070417, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!114 &8505225541566693579
 MonoBehaviour:

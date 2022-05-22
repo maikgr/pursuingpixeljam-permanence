@@ -104,13 +104,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 0
   cardName: Player
-  cardDescription: "A hardworking tree spirit, here to grow a lovely Evertree. However,
-    you can only spend so much time building your Treetown before your descendant
-    takes over! As your tree grows, it\u2019ll become more and more populated by
-    tree spirits just like you, but they\u2019ll mostly toil away inside the trunk
-    with their administrative duties\u2013 it seems like yours is the most exciting
-    job!"
-  cardInstruction: 
+  cardDescription: Capable of doing just about anything! Fishing, mining, tree logging,
+    fighting bandits, putting out fires and even repairing the Evertree! Sadly, like
+    many other things, is limited by impermanence of life and cannot work forever.
+  cardInstruction: 'A hardworking tree spirit, here to grow a lovely Evertree.What
+    an exciting job!  '
   cardSprite: {fileID: 5803474097180449316, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!114 &1870008114813206117
 MonoBehaviour:

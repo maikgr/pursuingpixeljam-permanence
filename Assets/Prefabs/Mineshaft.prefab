@@ -189,8 +189,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 3
   cardName: Mineshaft
-  cardDescription: ' A good place to gather some sturdy rocks for your Treetown.'
-  cardInstruction: 
+  cardDescription: 'Accessible now that the Evertree is bigger. A good place to gather
+    some sturdy rocks. '
+  cardInstruction: My shaft or mineshaft? Either way, this shaft is hard as rocks!
   cardSprite: {fileID: 6985661364003956066, guid: 1117d7c2bccec4f4883885ec30e907a8, type: 3}
 --- !u!114 &6722772238896837342
 MonoBehaviour:

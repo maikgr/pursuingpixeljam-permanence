@@ -260,9 +260,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 17
   cardName: Golden Fish
-  cardDescription: A rare water creature that can only be caught in a perfect weather
-    and a perfect temperature
-  cardInstruction: 
+  cardDescription: Caught by the Fisherman! Seems like this can be used to grow the
+    Evertree!
+  cardInstruction: A rare water creature that can only be caught in a perfect weather
+    and a perfect temperature.
   cardSprite: {fileID: 7237488114036594958, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!1 &538441744380428099
 GameObject:
