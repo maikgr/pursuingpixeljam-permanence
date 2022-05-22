@@ -51,7 +51,7 @@ namespace Permanence.Scripts.Mechanics
 
         private void FixedUpdate() {
             // Starts 40s after the game, check every 5s
-            if (!isEventRunning && Time.time > nextEventCheckTime)
+            if (!isEventRunning && Time.timeSinceLevelLoad > nextEventCheckTime)
             {
                 if (Random.Range(0f, 1f) <= eventChance)
                 {
@@ -88,7 +88,7 @@ namespace Permanence.Scripts.Mechanics
         {
             if (spawnedBanditsCount > 0) return;
             eventLevel += 1;
-            nextEventCheckTime = Time.time + 90;
+            nextEventCheckTime = Time.timeSinceLevelLoad + 90;
             isEventRunning = false;
         }
 

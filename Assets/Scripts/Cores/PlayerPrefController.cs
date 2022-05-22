@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Permanence.Scripts.Cores
 {
     public class PlayerPrefController : MonoBehaviour
     {
         public static PlayerPrefController instance;
+        [SerializeField]
+        private string startSceneName;
         public string PlayerName { get; private set; }
         public int GenerationNumber { get; private set; }
 
@@ -17,9 +20,16 @@ namespace Permanence.Scripts.Cores
                 Destroy(gameObject);
             }
             instance = this;
-            GenerationNumber = 1;
             DontDestroyOnLoad(gameObject);
-            PlayerName = "Player";
+            GenerationNumber = 1;
+        }
+
+        private void Start() {
+            if (SceneManager.GetActiveScene().name == startSceneName)
+            {
+                GenerationNumber = 1;
+                PlayerName = "Player";
+            }
         }
 
         public void SetName(string name) {

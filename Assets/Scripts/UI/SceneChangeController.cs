@@ -12,7 +12,16 @@ namespace Permanence.Scripts.UI
 
         public void ChangeScene()
         {
-            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+            StartCoroutine(LoadScene());
+        }
+
+        private IEnumerator LoadScene()
+        {
+            var asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
         }
     }
 }

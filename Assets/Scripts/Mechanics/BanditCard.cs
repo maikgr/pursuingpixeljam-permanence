@@ -37,7 +37,7 @@ namespace Permanence.Scripts.Mechanics
             };
             currentHealth = health;
             fireCardOffset = new Vector2(0, -0.65f);
-            nextFireSpawn = Time.time;
+            nextFireSpawn = Time.timeSinceLevelLoad;
         }
 
         private void Update()
@@ -53,10 +53,10 @@ namespace Permanence.Scripts.Mechanics
                     RemoveBandit();
                 }
             }
-            if (currentHealth > 0 && Time.time > nextFireSpawn)
+            if (currentHealth > 0 && Time.timeSinceLevelLoad > nextFireSpawn)
             {
                 SpawnFire();
-                nextFireSpawn = Time.time + fireSpawnInterval;
+                nextFireSpawn = Time.timeSinceLevelLoad + fireSpawnInterval;
             }
         }
 

@@ -1709,8 +1709,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449712965}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.55, z: -1}
-  m_LocalScale: {x: 1.85, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.57, z: -1}
+  m_LocalScale: {x: 1.85, y: 0.55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1113749881}
@@ -5068,7 +5068,6 @@ MonoBehaviour:
   - {fileID: 562934066871751874, guid: 8a896c8ba050e5a44aa29194bf363915, type: 3}
   level1Rewards:
   - {fileID: 6722772238896837331, guid: c56ba59d5afdaee4ab08b4c29a722347, type: 3}
-  - {fileID: 562934066871751874, guid: 8a896c8ba050e5a44aa29194bf363915, type: 3}
   level2Rewards:
   - {fileID: 2281952316265536858, guid: 1aecb9cdfa167584cb6d1572359294a7, type: 3}
   - {fileID: 2281952316265536858, guid: 1aecb9cdfa167584cb6d1572359294a7, type: 3}
@@ -6013,8 +6012,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809503867}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.55, z: -1}
-  m_LocalScale: {x: 1.85, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.57, z: -1}
+  m_LocalScale: {x: 1.85, y: 0.55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1615449631}
@@ -7362,6 +7361,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1870008114813206104, guid: 89c85ac0b6ec58149ba7f673d1c47004, type: 3}
+      propertyPath: totalLifetime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1870008114813206112, guid: 89c85ac0b6ec58149ba7f673d1c47004, type: 3}
       propertyPath: m_Name
       value: Player
