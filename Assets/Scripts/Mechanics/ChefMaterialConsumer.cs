@@ -36,7 +36,7 @@ namespace Permanence.Scripts.Mechanics
             defaultMats = CopyRequirement(requiredMaterials);
         }
 
-       private void LateUpdate() {
+        private void LateUpdate() {
             cardProgressBar.Value = timeTaken;
             DispatchEvent(CardProgressBarEvent.ON_PROGRESSING, cardProgressBar);
             if (isWorking)
