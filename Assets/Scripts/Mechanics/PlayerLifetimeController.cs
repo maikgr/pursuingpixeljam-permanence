@@ -10,6 +10,7 @@ using Permanence.Scripts.Entities;
 namespace Permanence.Scripts.Mechanics
 {
     [RequireComponent(typeof(PlayerWorkerCard))]
+    [RequireComponent(typeof(PlayerNameController))]
     public class PlayerLifetimeController : EventBusBehaviour<CardProgressBar>
     {
         [SerializeField]
@@ -17,23 +18,29 @@ namespace Permanence.Scripts.Mechanics
         [SerializeField]
         private float totalLifetime;
         [SerializeField]
-        private GameObject OldPlayer;
+        private OldPlayerNameController OldPlayer;
+        [SerializeField]
+        private GameObject NewPlayer;
         private float currentLifetime;
         private bool isLifetimeReducing;
         private AnimationCurve[] colorCurves;
         private PlayerWorkerCard worker;
         private CardProgressBar cardProgressBar;
+        private PlayerNameController playerNameController;
+        private PlayerPrefController playerPrefController;
 
         protected override void Awake()
         {
             base.Awake();
             worker = GetComponent<PlayerWorkerCard>();
+            playerPrefController = FindObjectOfType<PlayerPrefController>();
             currentLifetime = totalLifetime;
             cardProgressBar = new CardProgressBar()
             {
                 MinValue = 0,
                 MaxValue = totalLifetime
             };
+            playerNameController = GetComponent<PlayerNameController>();
         }
 
         private void Start()
@@ -86,8 +93,13 @@ namespace Permanence.Scripts.Mechanics
 
         private void StartOldAgeEvent()
         {
-            var spawnPoint = transform.position + new Vector3(2f, 0f, transform.position.z);
-            Instantiate(OldPlayer, spawnPoint, Quaternion.identity);
+            playerPrefController.IncreaseGeneration();
+            var oldSpawnPoint = transform.position + new Vector3(2f, 0f, transform.position.z);
+            var newSpawnPoint = transform.position + new Vector3(-2f, 0f, transform.position.z);
+            var oldPlayer = Instantiate(OldPlayer, oldSpawnPoint, Quaternion.identity);
+            oldPlayer.SetName(playerNameController.CurrentName);
+            var newPlayer = Instantiate(NewPlayer, newSpawnPoint, Quaternion.identity);
+            SfxController.instance.PlayAudio(Constants.GameSfxType.CardSpawn, transform.position);
             Destroy(gameObject);
         }
     }
