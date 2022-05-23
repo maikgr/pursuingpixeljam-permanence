@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canStackOnTypes: 09000000
+  canStackOnTypes: 0900000003000000040000000e00000012000000
 --- !u!114 &-2502152912095782252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,8 +361,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 9
   cardName: Stone
-  cardDescription: 'Mined from Miners in the Mineshaft Great material to help build
-    the Evertree '
+  cardDescription: 'Mined from Miners in the Mineshaft, great material to help build
+    the Evertree as well as material to repair broken structures. '
   cardInstruction: Contrary to popular belief, it is not weak to paper
   cardSprite: {fileID: -1627059902095274846, guid: a1327b4095717a84db78a3493394fded, type: 3}
 --- !u!1 &6590241115292424622

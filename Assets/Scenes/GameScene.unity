@@ -1282,8 +1282,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Human Bandits are attacking!
-  description: Flamethrowers in their hands and hatred in their hearts, these wicked
-    beings seek to bring ruin to your Evertree!
+  description: Bandits are attacking! Make sure to stomp them out before they set
+    everything on Fire!
   banditCard: {fileID: 8570145454805985219, guid: 275a021ca343c87469251d607eddd2b9, type: 3}
   fireCard: {fileID: 5817075233569163852, guid: 56bd889f43fed8e4899e64ff4398e2bd, type: 3}
   banditSpawnArea:
@@ -2206,9 +2206,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 2
   cardName: River
-  cardDescription: "Lovely for an afternoon swim\u2013 if only you weren\u2019t constantly
+  cardDescription: Great source of Fish and Water
+  cardInstruction: "Lovely for an afternoon swim\u2013 if only you weren\u2019t constantly
     busy with growing the Evertree!"
-  cardInstruction: 
   cardSprite: {fileID: 2976892090527305740, guid: 1117d7c2bccec4f4883885ec30e907a8, type: 3}
 --- !u!1 &656016664
 GameObject:
@@ -4933,10 +4933,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: 4
-  cardName: Evertree House
-  cardDescription: "Your home, your legacy. Grow it to the heavens, but don\u2019t
+  cardName: Evertree
+  cardDescription: 'Gather materials to grow the Evertree. As it grows, it''ll provide
+    access to more areas and creatures! '
+  cardInstruction: "Your home, your legacy. Grow it to the heavens, but don\u2019t
     leave your friends behind."
-  cardInstruction: 
   cardSprite: {fileID: -8242746148271369410, guid: 1117d7c2bccec4f4883885ec30e907a8, type: 3}
 --- !u!114 &1457690288
 MonoBehaviour:

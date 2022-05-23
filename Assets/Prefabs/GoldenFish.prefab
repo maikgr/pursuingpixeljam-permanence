@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canStackOnTypes: 08000000
+  canStackOnTypes: 0800000011000000
 --- !u!114 &5722705682416167907
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -38,12 +38,12 @@ namespace Permanence.Scripts.Mechanics
             if (resources.Any(res => res.Equals(other.cardType))) {
                 var resource = other.gameObject.GetComponent<ResourceCardBehaviour>();
                 var structure = other.gameObject.GetComponent<StructureCard>();
-                if (structure != null && structure.CurrentHealth < structure.MaxHealth)
+                if (structure == null ||
+                    (structure != null && structure.CurrentHealth > 0))
                 {
-                    structure.RestoreHealth();
+                    resource.StartUseResource();
+                    DispatchEvent(WorkerCardEvent.ON_START_WORKING);
                 }
-                resource.StartUseResource();
-                DispatchEvent(WorkerCardEvent.ON_START_WORKING);
             }
             else if (CardType.Bandit.Equals(other.cardType))
             {

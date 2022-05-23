@@ -125,7 +125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 10
   cardName: Everfruit
-  cardDescription: Can be used to grow the Evertree.
+  cardDescription: Produced by the Evertree. Can be used to grow the Evertree or
+    used chef.
   cardInstruction: Little gifts from your Evertree. Dearly loved by the populace,
     and widely used in many delectable recipes.
   cardSprite: {fileID: 178396450048254015, guid: a1327b4095717a84db78a3493394fded, type: 3}

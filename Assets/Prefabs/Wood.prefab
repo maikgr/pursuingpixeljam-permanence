@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 6561234384777801329}
   - component: {fileID: 2164711116699992105}
   - component: {fileID: 6718670970595389607}
+  - component: {fileID: 3883900986623956532}
   m_Layer: 0
   m_Name: Wood
   m_TagString: GameCard
@@ -430,7 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canStackOnTypes: 0f000000
+  canStackOnTypes: 0f000000030000000e00000004000000
 --- !u!114 &6718670970595389607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,7 +446,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 15
   cardName: Wood
-  cardDescription: 'Chopped up in the Forest Great material for growing the Evertree '
+  cardDescription: 'Chopped up in the Forest, great material for growing the Evertree
+    as well as material to fix any structure. '
   cardInstruction: 'This is just ordinary wood. Not to be confused with wood from
     the Evertree '
   cardSprite: {fileID: 3003631398333999520, guid: a1327b4095717a84db78a3493394fded, type: 3}
+--- !u!114 &3883900986623956532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6561234384777801328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ff236e97930764090741c376d730f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
