@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 8570145454805985219}
   - component: {fileID: 309702778271092775}
   - component: {fileID: 2893780255306525630}
+  - component: {fileID: 5608693869991283531}
   m_Layer: 0
   m_Name: HumanBandit
   m_TagString: GameCard
@@ -317,6 +318,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5902136327197382657}
+--- !u!114 &5608693869991283531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4538654758754328364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f487655a35abf24d853b3fb1909be1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 4538654759123202917}
 --- !u!1 &4538654759123202915
 GameObject:
   m_ObjectHideFlags: 0
