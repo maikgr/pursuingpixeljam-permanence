@@ -2082,6 +2082,7 @@ GameObject:
   - component: {fileID: 605769747}
   - component: {fileID: 605769743}
   - component: {fileID: 605769746}
+  - component: {fileID: 605769748}
   m_Layer: 0
   m_Name: River
   m_TagString: GameCard
@@ -2113,7 +2114,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6, y: 2.2}
+  m_Size: {x: 1.8, y: 2.3}
   m_EdgeRadius: 0
 --- !u!4 &605769742
 Transform:
@@ -2163,7 +2164,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605769739}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2209,6 +2210,19 @@ MonoBehaviour:
   cardInstruction: "Lovely for an afternoon swim\u2013 if only you weren\u2019t constantly
     busy with growing the Evertree!"
   cardSprite: {fileID: 2976892090527305740, guid: 1117d7c2bccec4f4883885ec30e907a8, type: 3}
+--- !u!114 &605769748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605769739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canStackOnTypes: 
 --- !u!1 &656016664
 GameObject:
   m_ObjectHideFlags: 0
@@ -4844,6 +4858,7 @@ GameObject:
   - component: {fileID: 1457690291}
   - component: {fileID: 1457690292}
   - component: {fileID: 1457690293}
+  - component: {fileID: 1457690294}
   m_Layer: 0
   m_Name: Evertree
   m_TagString: GameCard
@@ -4875,7 +4890,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6, y: 2.2}
+  m_Size: {x: 1.8, y: 2.3}
   m_EdgeRadius: 0
 --- !u!4 &1457690285
 Transform:
@@ -4905,7 +4920,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457690282}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -5039,6 +5054,19 @@ MonoBehaviour:
   loots:
   - loot: {fileID: 2281952316265536858, guid: 1aecb9cdfa167584cb6d1572359294a7, type: 3}
     chance: 1
+--- !u!114 &1457690294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457690282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canStackOnTypes: 
 --- !u!1 &1553285386
 GameObject:
   m_ObjectHideFlags: 0
@@ -7237,6 +7265,10 @@ PrefabInstance:
     - target: {fileID: 1870008114813206112, guid: 89c85ac0b6ec58149ba7f673d1c47004, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1870008114813206116, guid: 89c85ac0b6ec58149ba7f673d1c47004, type: 3}
+      propertyPath: m_BodyType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1870008114813206119, guid: 89c85ac0b6ec58149ba7f673d1c47004, type: 3}
       propertyPath: m_RootOrder
