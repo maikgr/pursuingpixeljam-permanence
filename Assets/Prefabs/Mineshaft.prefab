@@ -96,11 +96,11 @@ GameObject:
   - component: {fileID: 6722772238896837341}
   - component: {fileID: 6722772238896837340}
   - component: {fileID: 6722772238896837343}
-  - component: {fileID: 6722772238896837342}
   - component: {fileID: 6722772238896837329}
   - component: {fileID: 6722772238896837328}
   - component: {fileID: 6722772238896837336}
   - component: {fileID: 6722772238896837339}
+  - component: {fileID: 7434367825297112420}
   m_Layer: 0
   m_Name: Mineshaft
   m_TagString: GameCard
@@ -193,19 +193,6 @@ MonoBehaviour:
     some sturdy rocks. '
   cardInstruction: My shaft or mineshaft? Either way, this shaft is hard as rocks!
   cardSprite: {fileID: 6985661364003956066, guid: 1117d7c2bccec4f4883885ec30e907a8, type: 3}
---- !u!114 &6722772238896837342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6722772238896837331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f487655a35abf24d853b3fb1909be1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 6722772238866893712}
 --- !u!114 &6722772238896837329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +254,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 6722772238941309763}
+--- !u!114 &7434367825297112420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6722772238896837331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canStackOnTypes: 
 --- !u!1 &6722772238941309765
 GameObject:
   m_ObjectHideFlags: 0

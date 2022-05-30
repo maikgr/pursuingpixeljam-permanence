@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1870008114813206118}
   - component: {fileID: 1870008114813206116}
   - component: {fileID: 1870008114813206105}
-  - component: {fileID: 1870008114813206117}
   - component: {fileID: 1870008114813206106}
   - component: {fileID: 1870008114813206107}
   - component: {fileID: 1870008114813206104}
@@ -110,19 +109,6 @@ MonoBehaviour:
   cardInstruction: 'A hardworking tree spirit, here to grow a lovely Evertree.What
     an exciting job!  '
   cardSprite: {fileID: 5803474097180449316, guid: a1327b4095717a84db78a3493394fded, type: 3}
---- !u!114 &1870008114813206117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1870008114813206112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f487655a35abf24d853b3fb1909be1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1870008115363627319}
 --- !u!114 &1870008114813206106
 MonoBehaviour:
   m_ObjectHideFlags: 0

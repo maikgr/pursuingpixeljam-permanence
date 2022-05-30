@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 562934066871751876}
   - component: {fileID: 562934066871751879}
   - component: {fileID: 562934066871751878}
-  - component: {fileID: 562934066871751873}
   - component: {fileID: 5395728878421342801}
   - component: {fileID: 5933261221710222220}
   m_Layer: 0
@@ -190,19 +189,6 @@ MonoBehaviour:
   cardInstruction: "She might not have a kitchen right now, but that doesn\u2019t
     mean she\u2019s helpless."
   cardSprite: {fileID: -3054907766096214091, guid: a1327b4095717a84db78a3493394fded, type: 3}
---- !u!114 &562934066871751873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562934066871751874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f487655a35abf24d853b3fb1909be1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 562934066529222940}
 --- !u!114 &5395728878421342801
 MonoBehaviour:
   m_ObjectHideFlags: 0

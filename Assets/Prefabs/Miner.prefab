@@ -448,9 +448,9 @@ GameObject:
   - component: {fileID: 8505225541566693582}
   - component: {fileID: 8505225541566693581}
   - component: {fileID: 8505225541566693580}
-  - component: {fileID: 8505225541566693579}
   - component: {fileID: 8049634357763403056}
   - component: {fileID: 5712812377181660314}
+  - component: {fileID: 2505209971304532976}
   m_Layer: 0
   m_Name: Miner
   m_TagString: GameCard
@@ -542,19 +542,6 @@ MonoBehaviour:
   cardInstruction: Hardworking, earnest and here to help! As long as you can put
     up with their spontaneous impromptu song numbers. For rock and stone!
   cardSprite: {fileID: -9016436576232070417, guid: a1327b4095717a84db78a3493394fded, type: 3}
---- !u!114 &8505225541566693579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8505225541566693576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f487655a35abf24d853b3fb1909be1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 8505225541891265814}
 --- !u!114 &8049634357763403056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,6 +578,19 @@ MonoBehaviour:
   progressBar: {fileID: 156731008303891683}
   emptyBarPosition: -1.8
   fullBarPosition: 0
+--- !u!114 &2505209971304532976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8505225541566693576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canStackOnTypes: 
 --- !u!1 &8505225541891265813
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,7 +32,8 @@ namespace Permanence.Scripts.Mechanics
             card.RemoveEventListener(StackableCardEvent.ON_REMOVED, StopWorking);
         }
 
-        private void StartWorking(GameCard other) {
+        private void StartWorking(IEnumerable<StackableCard> stacks) {
+            var other = stacks.Last().GetComponent<GameCard>();
             if (other == null) return;
             workplaceCard = other;
             if (resources.Any(res => res.Equals(other.cardType))) {
@@ -48,18 +49,24 @@ namespace Permanence.Scripts.Mechanics
             else if (CardType.Bandit.Equals(other.cardType))
             {
                 var bandit = other.gameObject.GetComponent<BanditCard>();
-                bandit.StartReduceHealth(() => StopWorking(other));
+                bandit.StartReduceHealth(() => StopWorking(stacks));
                 DispatchEvent(WorkerCardEvent.ON_START_WORKING);
             }
             else if (CardType.Fire.Equals(other.cardType))
             {
                 var blocker = other.gameObject.GetComponent<BlockerCard>();
-                blocker.StartReduceHealth(() => StopWorking(other));
+                blocker.StartReduceHealth(() => StopWorking(stacks));
                 DispatchEvent(WorkerCardEvent.ON_START_WORKING);
             }
         }
 
-        private void StopWorking(GameCard other) {
+        private void StopWorking(IEnumerable<StackableCard> stacks) {
+            var other = stacks.Last().GetComponent<GameCard>();
+            StopWorking(other);
+        }
+
+        private void StopWorking(GameCard other)
+        {
             if (other == null) return;
             workplaceCard = null;
             if (resources.Any(res => res.Equals(other.cardType))) {

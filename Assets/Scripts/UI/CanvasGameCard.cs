@@ -10,7 +10,7 @@ using Permanence.Scripts.Mechanics;
 namespace Permanence.Scripts.UI {
     public class CanvasGameCard : MonoBehaviour, IDragHandler, IDropHandler
     {
-        public SelectableCard selectableCard;
+        public StackableCard selectableCard;
         [SerializeField]
         private GraphicRaycaster graphicRaycaster;
         private Canvas canvas;
@@ -20,7 +20,7 @@ namespace Permanence.Scripts.UI {
             canvas = graphicRaycaster.GetComponent<Canvas>();
         }
 
-        public void SetCard(SelectableCard card)
+        public void SetCard(StackableCard card)
         {
             selectableCard = card;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(

@@ -816,11 +816,11 @@ GameObject:
   - component: {fileID: 2238967797777605701}
   - component: {fileID: 2238967797777605702}
   - component: {fileID: 2238967797777605703}
-  - component: {fileID: 2238967797777605696}
   - component: {fileID: 2238967797777605697}
   - component: {fileID: 2238967797777605698}
   - component: {fileID: 2238967797777605723}
   - component: {fileID: 2238967797777605722}
+  - component: {fileID: 7956643705064495404}
   m_Layer: 0
   m_Name: Forest
   m_TagString: GameCard
@@ -915,19 +915,6 @@ MonoBehaviour:
     support. The trees are not quite as eternal as your Evertree\u2013 but you\u2019ll
     need to get Wood from somewhere.   "
   cardSprite: {fileID: -694126479088893765, guid: 1117d7c2bccec4f4883885ec30e907a8, type: 3}
---- !u!114 &2238967797777605696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2238967797777605699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f487655a35abf24d853b3fb1909be1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 2238967796620689041}
 --- !u!114 &2238967797777605697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,3 +976,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 2238967796838133401}
+--- !u!114 &7956643705064495404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238967797777605699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canStackOnTypes: 

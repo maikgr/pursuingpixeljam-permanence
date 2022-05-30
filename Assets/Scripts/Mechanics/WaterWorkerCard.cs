@@ -29,7 +29,8 @@ namespace Permanence.Scripts.Mechanics
             card.RemoveEventListener(StackableCardEvent.ON_REMOVED, StopWorking);
         }
 
-        private void StartWorking(GameCard other) {
+        private void StartWorking(IEnumerable<StackableCard> stacks) {
+            var other = stacks.Last().GetComponent<GameCard>();
             if (other == null || !CardType.Fire.Equals(other.cardType)) return;
             workplaceCard = other;
             var blocker = other.gameObject.GetComponent<BlockerCard>();
@@ -37,7 +38,13 @@ namespace Permanence.Scripts.Mechanics
             DispatchEvent(WorkerCardEvent.ON_START_WORKING);
         }
 
-        private void StopWorking(GameCard other) {
+        private void StopWorking(IEnumerable<StackableCard> stacks) {
+            var other = stacks.Last().GetComponent<GameCard>();
+            StopWorking(other);
+        }
+
+        private void StopWorking(GameCard other)
+        {
             if (other == null || !CardType.Fire.Equals(other.cardType)) return;
             var blocker = other.gameObject.GetComponent<BlockerCard>();
             blocker.StopReduceHealth();

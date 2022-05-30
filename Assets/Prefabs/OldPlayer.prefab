@@ -212,7 +212,6 @@ GameObject:
   - component: {fileID: 7913285197359822321}
   - component: {fileID: 7913285197359822322}
   - component: {fileID: 7913285197359822323}
-  - component: {fileID: 7913285197359822324}
   - component: {fileID: 472607978720388158}
   - component: {fileID: 242647016800136800}
   m_Layer: 0
@@ -306,19 +305,6 @@ MonoBehaviour:
     Doesn''t have the energy to build anymore but can enjoy watching their great-grandkids
     at work.  '
   cardSprite: {fileID: 8883374863942664610, guid: a1327b4095717a84db78a3493394fded, type: 3}
---- !u!114 &7913285197359822324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7913285197359822327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f487655a35abf24d853b3fb1909be1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 7913285197684449321}
 --- !u!114 &472607978720388158
 MonoBehaviour:
   m_ObjectHideFlags: 0

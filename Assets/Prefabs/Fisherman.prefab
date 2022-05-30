@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 562934066871751876}
   - component: {fileID: 562934066871751879}
   - component: {fileID: 562934066871751878}
-  - component: {fileID: 562934066871751873}
   - component: {fileID: 3265552332018170188}
   - component: {fileID: 2042563823211202808}
+  - component: {fileID: 5025723547841223755}
   m_Layer: 0
   m_Name: Fisherman
   m_TagString: GameCard
@@ -191,19 +191,6 @@ MonoBehaviour:
     places to nap. It doesn\u2019t seem to make her hauls any less bountiful, but
     it would be nice if she could stay awake during town meetings\u2026  "
   cardSprite: {fileID: 6834141593088924558, guid: a1327b4095717a84db78a3493394fded, type: 3}
---- !u!114 &562934066871751873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562934066871751874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f487655a35abf24d853b3fb1909be1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 562934066529222940}
 --- !u!114 &3265552332018170188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +227,19 @@ MonoBehaviour:
   progressBar: {fileID: 6870842493376480427}
   emptyBarPosition: -1.8
   fullBarPosition: 0
+--- !u!114 &5025723547841223755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562934066871751874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb9c76f09a5ffc41bdcfa46a353cc0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canStackOnTypes: 
 --- !u!1 &2418341977879069406
 GameObject:
   m_ObjectHideFlags: 0

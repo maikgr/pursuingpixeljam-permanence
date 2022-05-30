@@ -24,7 +24,8 @@ namespace Permanence.Scripts.Mechanics
             stack.RemoveEventListener(StackableCardEvent.ON_STACKED, Repair);
         }
 
-        private void Repair(GameCard other) {
+        private void Repair(IEnumerable<StackableCard> stacks) {
+            var other = stacks.Last();
             if (other == null) return;
 
             var structure = other.GetComponent<StructureCard>();
